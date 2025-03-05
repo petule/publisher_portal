@@ -1,5 +1,4 @@
 "use strict";
-alert('loaded main custom')
 /* Aside & Navbar: dropdowns */
 Array.from(document.getElementsByClassName('dropdown')).forEach(function (elA) {
   elA.addEventListener('click', function (e) {
