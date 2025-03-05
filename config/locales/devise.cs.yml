@@ -24,11 +24,19 @@ cs:
       timeout: 'Vaše relace vypršela, přihlašte se prosím znovu, pak můžete pokračovat.'
       inactive: 'Váš účet ještě nebyl aktivován.'
     sessions:
+      title: Administrace pro nakladatele
+      subtitle: Přihlásit se
+      help:
+        email: Vyplňte Váš email
+        password: Vyplňte Vaše heslo
       signed_in: 'Přihlášení úspěšné.'
       signed_out: 'Odhlášení úspěšné.'
       already_signed_out: 'Odhlášení úspěšné.'
       sure: 'Skutečně se chcete odhlásit?'
+      log_in: Přihlásit se
     passwords:
+      title:  Administrace pro nakladatele
+      subtitle: Zapomněli jste heslo?
       change_link: "Změnit heslo"
       send_instructions: 'Nové heslo bylo zasláno na Vaši e-mailovou adresu. Pokud zpráva nedorazila, nezapomeňte se také podívat do spamové schránky.'
       submit_instructions: 'Zaslat instrukce na obnovu hesla'
@@ -39,6 +47,7 @@ cs:
       submit: "Změnit mé heslo"
       new_password: 'Nové heslo'
       length_minimun: minimálně %{length} znaků
+      button_send_instruction: Pošlete mi pokyny k resetování hesla
     confirmations:
       send_instructions: 'Za několik minut obdržíte e-mail s instrukcemi k potvrzení vašeho účtu.'
       send_paranoid_instructions: 'Pokud je e-mailová adresa v naší databázi, obdržíte na ní instrukce pro potvrzení vašeho účtu.'

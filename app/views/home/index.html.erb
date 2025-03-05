@@ -37,10 +37,12 @@
             <span>Messages</span>
           </a>
           <hr class="navbar-divider">
-          <a class="navbar-item">
+          <%= link_to destroy_user_session_path, method: :delete,
+                      title: t('devise.navbar.sign_out'), class: 'navbar-item', turbo_frame: '_top',
+                      data: { turbo_method: :delete, turbo_confirm: t('devise.sessions.sure') } do %>
             <span class="icon"><i class="mdi mdi-logout"></i></span>
-            <span>Log Out</span>
-          </a>
+            <span><%= t('devise.navbar.sign_out') %></span>
+          <% end %>
         </div>
       </div>
       <div class="navbar-item dropdown has-divider has-user-avatar">
@@ -79,10 +81,12 @@
         <span class="icon"><i class="mdi mdi-github-circle"></i></span>
         <span>GitHub</span>
       </a>
-      <a title="Log out" class="navbar-item desktop-icon-only">
+      <%= link_to destroy_user_session_path, method: :delete, title: t('devise.navbar.sign_out'),
+                  class: 'navbar-item desktop-icon-only', turbo_frame: '_top',
+                  data: { turbo_method: :delete, turbo_confirm: t('devise.sessions.sure') } do %>
         <span class="icon"><i class="mdi mdi-logout"></i></span>
-        <span>Log out</span>
-      </a>
+        <span><%= t('devise.navbar.sign_out') %></span>
+      <% end %>
     </div>
   </div>
 </nav>

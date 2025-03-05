@@ -1,0 +1,623 @@
+---
+cs:
+  currency_code: 'czk'
+  currencies:
+    czk: 'Kč'
+    eur: 'EUR'
+    usd: 'USD'
+  activerecord:
+    attributes:
+      user:
+        email: "E-mail"
+        password: "Heslo"
+        password_confirmation: "Heslo znovu"
+        first_name: Jméno
+        last_name: Příjmení
+        remember_me: "Trvalé přihlášení"
+    errors:
+      messages:
+        record_invalid: 'Validace je neúspešná: %{errors}'
+        restrict_dependent_destroy:
+          has_one: Nemůžu smazat položku protože existuje závislá/ý/é %{record}
+          has_many: Nemůžu smazat položku protože existuje závislé/ý %{record}
+  date:
+    abbr_day_names:
+    - Ne
+    - Po
+    - Út
+    - St
+    - Čt
+    - Pá
+    - So
+    abbr_month_names:
+    -
+    - led
+    - úno
+    - bře
+    - dub
+    - kvě
+    - čvn
+    - čvc
+    - srp
+    - zář
+    - říj
+    - lis
+    - pro
+    day_names:
+    - neděle
+    - pondělí
+    - úterý
+    - středa
+    - čtvrtek
+    - pátek
+    - sobota
+    formats:
+      default: "%d. %m. %Y"
+      long: "%d. %B %Y"
+      short: "%d %b"
+    month_names:
+    -
+    - leden
+    - únor
+    - březen
+    - duben
+    - květen
+    - červen
+    - červenec
+    - srpen
+    - září
+    - říjen
+    - listopad
+    - prosinec
+    order:
+    - :day
+    - :month
+    - :year
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        one: asi hodinou
+        few: asi %{count} hodinami
+        other: asi %{count} hodinami
+      about_x_months:
+        one: asi měsícem
+        few: asi %{count} měsíci
+        other: asi %{count} měsíci
+      about_x_years:
+        one: asi rokem
+        few: asi %{count} roky
+        other: asi %{count} roky
+      almost_x_years:
+        one: téměř rokem
+        few: téměř %{count} roky
+        other: téměř %{count} roky
+      half_a_minute: půl minutou
+      less_than_x_minutes:
+        one: necelou minutou
+        few: ani ne %{count} minutami
+        other: ani ne %{count} minutami
+      less_than_x_seconds:
+        one: necelou sekundou
+        few: ani ne %{count} sekundami
+        other: ani ne %{count} sekundami
+      over_x_years:
+        one: více než rokem
+        few: více než %{count} roky
+        other: více než %{count} roky
+      x_days:
+        one: 24 hodinami
+        few: "%{count} dny"
+        other: "%{count} dny"
+      x_minutes:
+        one: minutou
+        few: "%{count} minutami"
+        other: "%{count} minutami"
+      x_months:
+        one: měsícem
+        few: "%{count} měsíci"
+        other: "%{count} měsíci"
+      x_seconds:
+        one: sekundou
+        few: "%{count} sekundami"
+        other: "%{count} sekundami"
+    prompts:
+      day: Den
+      hour: Hodina
+      minute: Minuta
+      month: Měsíc
+      second: Sekunda
+      year: Rok
+  errors:
+    format: "%{attribute} %{message}"
+    messages:
+      accepted: musí být potvrzeno
+      blank: je povinná položka
+      present: musí být prázdný/á/é
+      confirmation: nebylo potvrzeno
+      empty: nesmí být prázdný/á/é
+      equal_to: musí být rovno %{count}
+      even: musí být sudé číslo
+      exclusion: je vyhrazeno pro jiný účel
+      greater_than: musí být větší než %{count}
+      greater_than_or_equal_to: musí být větší nebo rovno %{count}
+      inclusion: není v seznamu povolených hodnot
+      invalid: není platná hodnota
+      less_than: musí být méně než %{count}
+      less_than_or_equal_to: musí být méně nebo rovno %{count}
+      not_a_number: není číslo
+      not_an_integer: musí být celé číslo
+      odd: musí být liché číslo
+      required: musí existovat
+      taken: již databáze obsahuje
+      too_long: je příliš dlouhý/á/é (max. %{count} znaků)
+      too_short: je příliš krátký/á/é (min. %{count} znaků)
+      wrong_length: nemá správnou délku (očekáváno %{count} znaků)
+      other_than: musí být rozdílný/á/é od %{count}
+    template:
+      body: 'Následující pole obsahují chybně vyplněné údaje: '
+      header:
+        one: Při ukládání objektu %{model} došlo k chybám a nebylo jej možné uložit
+        few: Při ukládání objektu %{model} došlo ke %{count} chybám a nebylo možné
+          jej uložit
+        other: Při ukládání objektu %{model} došlo ke %{count} chybám a nebylo možné
+          jej uložit
+  helpers:
+    select:
+      prompt: Prosím vyberte si
+    submit:
+      create: Vytvořit %{model}
+      submit: Uložit %{model}
+      update: Aktualizovat %{model}
+      send: ODESLAT
+      search: HLEDAT
+    form:
+      reply: "Po odeslání formuláře Vás budeme kontaktovat během následujících 24 hodin."
+      label_name: "Jméno"
+      label_email: "E-mail"
+      label_message: "Vaše zpráva"
+      label_title: "Název knihy"
+      label_author: "Autor"
+      label_edition: "Série"
+      label_publisher: "Nakladatel"
+      label_description: "Popis knihy"
+      label_genre: "Žánr"
+      label_language: "Jazyk"
+      label_price_from: "Cena od"
+      label_price_to: "Cena do"
+      label_year_from: "Rok vydání od"
+      label_year_to: "Rok vydání do"
+      label_isbn: "ISBN / EAN"
+      label_format: "Formát"
+    page:
+      search_by_parameters: "Hledání elektronických knih dle parametrů"
+      you_order: "Objednáváte"
+      order:
+        nothing: "zatím nic :-("
+      newsletter_line_text: "Nezmeškejte <strong>akční ceny</strong> a <strong>slevy na e-knihy</strong>"
+      all_authors: "Všichni autoři"
+      last_30_days: "Minulých 30 dní"
+      last_365_days: "Minulých 365 dní"
+      all_best_selling_books: "Všechny nejprodávanější e-knihy"
+      all_articles: "Všechny články"
+      download_immediately: "Ihned ke stažení do 3 minut"
+      in_format: "ve formátu e-knihy "
+      look_at_all: "podívejte se na všechny"
+      bestsellers: "Bestsellery"
+    currency:
+      czk: "CZK"
+      eur: "EUR"
+    cancel_all_filters: "Zrušit všechny filtry"
+    selected_params: "Vybrané parametry"
+    placeholder:
+      search: "Hledaný výraz..."
+      name: "Jméno"
+      surname: "Příjmení"
+      email: "jmeno.prijmeni@vas.email.cz"
+      password_min_five_characters: "Zvolte si heslo (min. 5 znaků)"
+      password_for_review: "Heslo znovu pro kontrolu"
+      password: "Heslo"
+      company_name: "Název firmy"
+      ico: "Např. 77730033"
+      dic: "Např. CZ77730033"
+      zip: "Např. 16000"
+      city: "Např. Praha 6 Dejvice"
+      street: "Např. Nádražní 1"
+      enter_your_email: "Zadejte Váš e-mail..."
+      emal_for_reset_passrowd: "Sem napište svůj e-mail pro změnu hesla"
+      message: "Sem napište text zprávy."
+      title: "Název knihy"
+      author: "Autor"
+      edition: "Série"
+      publisher: "Nakladatel"
+      description: "Popis knihy"
+      genre: "Zvolte žánr"
+      language: "Zvolte jazyk"
+      price_from: "Cena od"
+      price_to: "Cena do"
+      year_from: "Rok vydání od"
+      year_to: "Rok vydání do"
+      isbn: "ISBN / EAN libovolného formátu"
+      format: "Formát"
+    country:
+      cz: "Česká republika"
+      sk: "Slovenská republika"
+    button:
+      back_to_shop: "« Zpět do obchodu"
+      step_back: "« O krok zpět"
+      create_account: "Vytvořit účet »"
+      log_in: "Přihlásit se »"
+      forgot_password: "Zapomněli jste heslo?"
+      continue_to_trans_pay: "Pokračujte na platbu »"
+      continue_order: "Pokračujte v objednávce »"
+      submit_order_pay: "Odeslat objednávku a zaplatit »"
+      send_regi: "Odeslat »"
+      send: "Odeslat"
+      send_arrow: "Odeslat  »"
+      save: "Uložit"
+      add_all_to_cart_arrow: "Přidat vše do košíku »"
+  number:
+    currency:
+      format:
+        delimiter: " "
+        format: "%n %u"
+        precision: 2
+        separator: ","
+        significant: false
+        strip_insignificant_zeros: false
+        unit: Kč
+    format:
+      delimiter: "."
+      precision: 3
+      separator: ","
+      significant: false
+      strip_insignificant_zeros: false
+    human:
+      decimal_units:
+        format: "%n %u"
+        units:
+          billion: Miliarda
+          million: Milion
+          quadrillion: Kvadrilion
+          thousand: Tisíc
+          trillion: Bilion
+          unit: ''
+      format:
+        delimiter: ''
+        precision: 1
+        significant: false
+        strip_insignificant_zeros: false
+      storage_units:
+        format: "%n %u"
+        units:
+          byte: B
+          gb: GB
+          kb: KB
+          mb: MB
+          tb: TB
+    percentage:
+      format:
+        delimiter: ''
+        format: "%n%"
+    precision:
+      format:
+        delimiter: ''
+  support:
+    array:
+      last_word_connector: " a "
+      two_words_connector: " a "
+      words_connector: ", "
+  time:
+    am: dopoledne
+    formats:
+      default: "%a %d. %B %Y %H:%M %z"
+      long: "%A %d. %B %Y %H:%M"
+      short: "%d. %m. %H:%M"
+    pm: odpoledne
+  app:
+    nav:
+      contacts: "Kontakty"
+      who_we_are: "Kdo jsme"
+      all_about_buying: "Vše o nákupu"
+      blog: "Blog"
+      login: "Přihlášení"
+      registration: "Registrace"
+      my_choice: "Můj výběr"
+      e_books: "<span>EKNIHY</span>"
+      news_of_week: "<span>Novinky týdne</span>"
+      discounts: "<span>★ SLEVY a Akce</span>"
+      vouchers: "<span>Poukazy</span>"
+      presents: "<span>Dárky</span>"
+      publish_e_book: "<span>Vydání e-knihy</span>"
+      services: "<span>Služby</span>"
+      account:
+        my_ebooks: "Mé e-knihy"
+        order_history: "Historie objednávek"
+        wishlist: "Má přání"
+        settings: "Nastavení"
+        logout: "Odhlášení"
+    search:
+      submit: 'Hledat'
+    desc: "E-book elektronické knihy"
+    footer:
+      newsletter_login: Přihlásit
+      need_help: "Potřebujete poradit?"
+      support: "Poradí vám: "
+      support_link: "Lukáš Vik"
+      email: " na e-mailu: "
+      all_contacts: " všechny "
+      contacts: "kontakty"
+      phone: "Mobil: "
+      help_with: " Pomůže vám i s "
+      all_about_buying: "Vše o nákupu"
+      useful_information: "Užitečné informace"
+      services: "Databook.cz - služby"
+      services_desc: "Specializujeme se na tvorbu a prodej digitálních produktů a programování v Ruby on Rails."
+      contact_desc_2: "Specialisté na elektronické knihy"
+      ic: "IČ 76230627, neplátce DPH."
+      sale_abroad: "Pro zahraniční plnění plátce DPH (identifikovaná osoba)"
+      ruby_made: "Programátoři v Ruby on Rails"
+      publish_ebook: "Vydání eknihy"
+      news_watching: "Sledování novinek"
+      certificate:
+        title: "Certifikáty a výhody"
+        red: "Elektronické knihy ZDARMA ke stažení do 3 minut."
+        green: "Elektronické knihy i bez registrace."
+        blue_1: "98 % zákazníků nás doporučuje."
+        blue_2: "Přes 400 kladných recenzí."
+      payment_method:
+        visa_varified: "Verified by VISA"
+        mastercard_secure: "MasterCard SecureCode"
+        visa: "VISA"
+        mastercard: "MasterCard"
+        maestro: "Maestro"
+        bank: "Bankovní převod"
+      year: "2011 – "
+      copy: " &copy "
+      help: "Nápověda"
+      detailed_search: "Podrobné hledání"
+      how_to_reed_ebooks: "Jak číst e-knihy?"
+      free_ebook: "E-knihy ZDARMA"
+      where_is_my_order: "Kde je moje objednávka?"
+      where_is_my_paid_ebook: "Kde je má zaplacená e-kniha?"
+      how_librarien_works: "Jak funguje knihovnička?"
+      complaint: "Reklamace e-knih"
+      method_of_payment: "Způsoby platby"
+      protection_of_personal_data: "Ochrana osobních údajů"
+      terms_and_conditions: "Obchodní podmínky"
+      ebook_publishing: "Vydání e-knihy"
+      courses: "Kurzy"
+      ebook_promotion: "Propagace na Databook.cz"
+      competitions: "Soutěže"
+      promotional_prices_and_discounts: "Akční ceny a slevy"
+      benefits_of_registration: "Výhody registrace"
+      newsletter: "Newsletter"
+      interesting_ebooks_topics: "Zajímavá témata e-knih"
+      list_of_authors: "Seznam autorů"
+      complete_contacts: "Kompletní kontakty"
+      view_services: "Podívejte se na naše služby"
+      help_with_release_ebook: "Vydáním elektronické knihy"
+      support_person: "Lukáš Vik"
+    phone_number: "736 212 836"
+    open_hours: "Po-Pá 9-19"
+    email: "info@databook.cz"
+    international_code: "+420 "
+    page:
+      headlines:
+        home: "Představujeme zajímavé e-knihy a bestsellery"
+        categories:
+          title: "Kategorie"
+        account:
+          settings: "Nastavení"
+          title: "Uživatelský účet"
+          wishlist: "Má přání"
+        ebook_publishing: "Vydání elektronické knihy"
+      aside:
+        book_news_day: "Knižní novinky ze dne"
+        best_selling_authors: "Nejprodávanější autoři"
+        best_sellings_book: "Nejprodávanější e-knihy"
+        articles: "Poslední články blogu"
+      ebook_for_action_price: "E-kniha za akční cenu"
+      previous_customer_bought: "Zákazník před vámi koupil"
+      we_recommend_you: "Doporučujeme pro vás"
+      favorite_categories: "Oblíbené kategorie na Databook.cz"
+      news: "Novinky"
+      new_authors: "Noví autoři"
+      sales: "Slevy"
+      author: "Autor"
+      price: "Cena"
+      what_are_ebooks: "Co jsou elektronické knihy?"
+      filter_ebooks_autor_other_params: "Filtrovat e-knihy podle autora a dalších parametrů"
+      authors: "Autoři"
+      publishers: "Nakladatelé"
+      sort_ebooks: "Řadit elektronické knihy"
+      products:
+        type_ebook: "Elektronická kniha"
+        publisher: "Nakladatel"
+        product_type: "Ebook, elektronická kniha:"
+        book_edition: "Ekniha ze série:"
+        book_genre: "Žánr:"
+        review_count: "hodnocení"
+        write_review: "Napište recenzi"
+        watch_author_books: "Hlídat novinky od autora"
+        original_price: "Běžná cena:"
+        save: "Ušetříte"
+        add_to_cart: "Přidat do košíku"
+        add_credit_to_cart: "Přikupte si kredit na nákup v hodnotě 1000 Kč"
+        availability: "Celá ekniha je ihned ke stažení do 3 minut a jde číst na všem."
+        add_to_favorite: "Přidat do oblíbených"
+        put_gift: "Věnovat jako dárek"
+        download_samples: "Stáhnout ukázky knihy ZDARMA"
+        download_pdf_sample: "Stáhnout ukázku ve formátu PDF do PC a notebooku"
+        download_epub_sample: "Stáhnout ukázku ve formátu ePub pro čtečky PocketBook a mobilní telefon"
+        download_mobi_sample: "Stáhnout ukázku ve formátu Mobi do čtečky Amazon Kindle"
+        long_desc_ebook: "e-kniha"
+        about_author: "O autorovi"
+        about_publisher: "O nakladateli"
+        promo: "<strong>Od roku 2011</strong> prodáváme elektronické knihy, jako <em>oficiální prodejce nakladatele</em> jsme vyřídili již <strong>přes 12 000 objednávek.</strong> Specializujeme se na tvorbu a prodej digitálních produktů a programování. <strong>Vydáváme a propagujeme elektronické knihy</strong> českých a slovenských autorů."
+        link_publish_ebooks: "Vydáváme eknihy"
+        text_publish: " od rukopisu po eknihu v dobré kvalitě včetně zajištění distribuce po ČR a SR - "
+        link_write_blog: "Píšeme blog"
+        text_write_blog: " jak napsat, vydat a úspěšně prodávat knihu"
+        link_programming: "Programování aplikací v Ruby on Rails"
+        link_reference: "Databook.cz je naše reference"
+        link_adwertising: "reklama na Databook.cz"
+        how_get_ebook: "Jak e-knihu dostanete?"
+        about_delivery: "Pokud je e-kniha za peníze, stačí ji zaplatit. Po připsání peněz na náš účet ji stáhnete ze sekce 'Mé knihy' <strong><a href='/users/sign_in'>po přihlášení do  Vašeho účtu</a></strong>. Můžete si vybrat až z <strong> 11 platebních metod.</strong>"
+        link_payment_method_info: "Více informací v nápovědě"
+        payment_type: "Elektronická knížka je ihned ke stažení dle typu zvolené platby:"
+        credit_card: "Platba platební kartou – v reálném čase"
+        bank_button: "Rychlý bankovní převod – v reálném čase"
+        bank: "Platba z účtu na účet, při odeslání platby do 15:00 – druhý den"
+        bank_info: "Platba z účtu na účet, při zaslání potvrzení o provedené platbě - do 30 minut"
+        product_parameters: "Parametry:"
+        language: "Jazyk:"
+        pages: "Počet stran:"
+        publishing_date: "Rok vydání"
+        isbn: "ISBN elektronické knihy"
+        isbn_epub: "ISBN formátu epub:"
+        isbn_mobi: "ISBN formátu mobi Kindle:"
+        isbn_pdf: "ISBN formátu PDF:"
+        ebook_size: "Velikost e-knihy:"
+        ebook_in_category: "E-kniha v kategorii:"
+        review: "Uživatelské recenze"
+        view_next_review: "Zobrazit další doporučení"
+        button_add_review: "Přidejte vlastní recenzi"
+        title_sponzored: "Sponzorované produkty"
+        title_bestsellers: "Nejprodávanější produkty"
+        title_discount: "Produkty ve slevě"
+      contact:
+        contact_introtext: "<em>Databook.cz</em> je ryze český projekt založený roku 2011. <strong>Rádi&nbsp;čteme</strong> a programujeme a vydáváme knihy. Neustále se staráme o to, aby se vám na našem e-shopu líbilo a <strong>nakupovalo bez&nbsp;překážek</strong>. Máte-li jakýkoliv dotaz či problém sem s ním, vyřešíme jej rychle a k vaší spokojenosti."
+        h2_questions: "Své dotazy, připomínky nebo náměty nám můžete zasílat na email:"
+        h3_email: "info@databook.cz"
+        contact_person: "Za vaši korespondenci a zákaznickou podporu v této chvíli odpovídá: Lukáš Vik."
+        h3_bank: "Bankovní spojení"
+        bank_account: "Číslo účtu:"
+        bank_code: "Kód banky:"
+        h4_slovenia: "Slovensko a země mimo ČR"
+        slovenia_text: "Pokud chcete platit v Eurech použijte"
+        h3_invoice_data: "Fakturační údaje"
+      services:
+        h1_services_headline: "Služby"
+        services_introtext: "Jsme milovníci elektronických knih a programátoři. <strong>Vydáváme a propagujeme elektronické knihy.</strong>
+        Mezi naše služby také patří <strong>programování webových aplikací na zakázku.</strong>"
+        h2_ebook_publishing: "Vydání e-knihy"
+        ebook_publishing: "Když jste autor a máte originální rukopis k vydání."
+        h2_programming: "Programování"
+        programming: "Jsme programátoři. Podívejte se, co umíme."
+        h2_add_ebook: "Přidat e-knihu"
+        add_ebook: "Když jste autor a chcete přidat svou e-knihu v PDF, ebub nebo mobi."
+        h2_propagation: "Propagace a inzerce"
+        propagation: "Když chcete mít reklamu na Databook, či propagovat eknihu."
+      searching:
+        plus_searching: "Rozšířené vyhledávání"
+        introtext: "Hledáte autora? Hledejte v poli autor jeho jméno. Hledáte nakladatele? Hledejte v poli nakladatel a pak klikněte na hledat."
+      vouchers:
+        h1_headline: "Dárkové poukazy"
+        introtext: "Dárkový poukaz pro vaše blízké k narozeninám, svátku, výročí, Vánocům či jen z přátelství."
+        text: "<h3>Jak zakoupit dárkový poukaz?</h3>
+              <ul>
+              <li>Vložte do košíku dárkový poukaz a pokračujte v objednávce.</li>
+              <li>Po připsání peněz na náš účet vám zašleme e-mail s dokladem o zaplacení. Dárkový poukaz najdete ve svém mailu.</li>
+              </ul>
+              <h3>Objednávky dárkových poukazů můžete vyřídit i mailem či telefonicky:</h3>
+              <p>E-mail: info@databook.cz - Telefon: +420 736 212 836, Po - Pá, 7-19 hod</p>
+              <h2>Potěšte své blízké</h2>"
+      carts:
+        shipping_payment: "Doprava a platba"
+        p: "Kupujete elektronické knihy"
+        image: "Obrázek"
+        name_desc: "Název a popis zboží"
+        price: "Cena vč. DPH"
+        ebook_by_author: "Elektronická kniha od autora"
+        transport: "Doprava"
+        availability: "Dostupnost"
+        immediately_downloadable: "Ihned ke stažení"
+        free_electronically: "ZDARMA – elektronicky"
+        total: "Celkem"
+        including_tax: "vč. 10% DPH"
+        transport_free: "Doprava: ZDARMA"
+        login_or_signup: "Přihlašte se, nebo si vytvořte účet"
+        buy_for_first_time: "Nakupuji zde poprvé – vytvořte si účet s knihovničkou, kam se e-knihy uloží"
+        agree_with_terms_and_conditions:
+          i_agree: "Souhlasím s "
+          terms_and_conditions: "obchodními podmínkami"
+        have_account: "Mám účet – chci se přihlásit"
+        order_check: "Kontrola objednávky"
+        reguired_fields_text: "Pole označená hvězdičkou (*) jsou povinná. Bez nich není možné objednat zboží."
+        buy_for_business: "Nakupuji na firmu"
+        finish_text: "Na každou transakci řádně vystavujeme fakturu a tato data jsou nutným podkladem pro její vystavení. Děkujeme za pochopení."
+        billing_information: "Fakturační údaje"
+        corporate_information: "Firemní údaje"
+        with_order_you_agree_with: "Odesláním objednávky souhlasíte s"
+        shop_cart: "Košík"
+        bill_info_and_send: "Fakturační údaje a odeslání"
+        choose_pay_method: "Zvolte způsob platby"
+        pay_method:
+          bank_transfer: "Bankovním převodem: ZDARMA"
+          online: "Platba online: ZDARMA – včetně platebních karet"
+        have_voucher: "Mám slevový kupon"
+        varify_voucher: "Ověřit kupon"
+        voucher: "Slevový kupon"
+        enter_code: "Zadejte kód slevového kuponu"
+      sign_in:
+        title: "Přihlásit se, nebo vytvořit účet"
+        new_customers: "Noví zákazníci:"
+        benefits_of_account: "Díky zákaznickému účtu získáte knihovničku, možnost rychlejšího a snadnějšího nakupování, přehled a historii objednávek a mnoho dalších výhod."
+        have_account_login: "Pokud zde máte účet, pak se prosím přihlaste."
+      thead:
+        name: "Název"
+        author: "Autor"
+        order: "Objednávka"
+        download_ebook: "Stažení e-knihy"
+        order_number: "Č. objednávky"
+        date: "Datum"
+        customer: "Zákazník"
+        order_status: "Stav"
+        paid: "Zaplaceno"
+        document: "Doklad"
+    categories:
+      ebooks:
+        title: "Elektronické knihy"
+        novels_shortstories:
+          title: "Romány, povídky, novely"
+          historical_novels: "Historické romány"
+          adventure_novels: "Dobrodružné romány"
+          psychological_novels: "Psychologicé romány"
+          war_novels: "Válečné romány"
+        detectives_crimes:
+          title: "Detektivky, krimi"
+        horror_thriller:
+          title: "Horory, thrillery"
+          horrors: "Horory"
+          thrillers: "Thrillery"
+        fantasy_scifi:
+          title: "Fantasy, sci-fi"
+          fantasy: "Fantasy"
+          scifi: "Sci-fi"
+        erotica_sex:
+          title: "Erotika, sex"
+        romance:
+          title: "Romantika"
+        humor_satire_aphorisms:
+          title: "Humor, satira, aforismy"
+        other_for_adults:
+          title: "Ostatní pro dospělé"
+        foreign_languages:
+          title: "Cizí jazyky"
+        history:
+          title: "Historie, dějiny"
+        literature_of_fact:
+          title: "Literatura faktu"
+        literary_biography:
+          title: "Literární biografie, životopisy"
+        adult_learning_literature:
+          title: "Naučná pro dospělé"
+        health_and_lifestyle:
+          title: "Zdraví, životní styl"
+        general_and_others:
+          title: "Všeobecné a ostatní"
+        personal_develop_career:
+          title: "Osobní rozvoj, kariéra"
+    pahe:
+      thead:
+        total_price: "Cena celkem"

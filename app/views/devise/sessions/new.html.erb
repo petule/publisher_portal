@@ -1,0 +1,48 @@
+<h1><%= t('devise.sessions.title') %></h1>
+<section class="section main-section">
+  <div class="card">
+    <header class="card-header">
+      <p class="card-header-title">
+        <span class="icon"><i class="mdi mdi-lock"></i></span>
+        <%= t('devise.sessions.subtitle') %>
+      </p>
+    </header>
+    <div class="card-content">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="field spaced">
+          <%= f.label :email %>
+          <div class="control icons-left">
+            <%= f.email_field :email, autofocus: true, autocomplete: "user@example.com" %>
+            <span class="icon is-small left"><i class="mdi mdi-account"></i></span>
+          </div>
+          <p class="help"><%= t('devise.sessions.help.email') %></p>
+        </div>
+        <div class="field spaced">
+          <%= f.label :password %>
+          <p class="control icons-left">
+            <%= f.password_field :password, autocomplete: "current-password" %>
+            <span class="icon is-small left"><i class="mdi mdi-asterisk"></i></span>
+          </p>
+          <p class="help"><%= t('devise.sessions.help.password') %></p>
+        </div>
+        <% if devise_mapping.rememberable? %>
+          <div class="field spaced">
+            <div class="control">
+              <%= f.label :remember_me do %>
+                <%= f.check_box :remember_me %>
+                <span class="check"><%= t('activerecord.attributes.user.remember_me') %></span>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+        <hr>
+        <div class="field grouped">
+          <div class="control">
+            <%= f.submit t('devise.sessions.log_in'), class: 'button blue' %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
+<%= render "devise/shared/links" %>
