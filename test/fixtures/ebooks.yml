@@ -1,0 +1,61 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  original_title: MyString
+  subtitle: MyString
+  short_content: MyString
+  content: MyText
+  anotation: MyText
+  video: MyString
+  isbn: MyString
+  isbn_epub: MyString
+  isbn_mobi: MyString
+  isbn_pdf: MyString
+  series: one
+  percentage_preview: 1
+  language: one
+  activate_at: 2025-03-07 21:27:02
+  change_at: 2025-03-07 21:27:02
+  active: false
+  internal_number: MyString
+  publisher: one
+  part: 1
+  publication_year: 1
+  page_count: 1
+  publication_place: 1
+  licence_end_at: 2025-03-07 21:27:02
+  sale_start_at: 2025-03-07 21:27:02
+  sale_end_at: 2025-03-07 21:27:02
+  url: MyString
+  sponsored: false
+
+two:
+  title: MyString
+  original_title: MyString
+  subtitle: MyString
+  short_content: MyString
+  content: MyText
+  anotation: MyText
+  video: MyString
+  isbn: MyString
+  isbn_epub: MyString
+  isbn_mobi: MyString
+  isbn_pdf: MyString
+  series: two
+  percentage_preview: 1
+  language: two
+  activate_at: 2025-03-07 21:27:02
+  change_at: 2025-03-07 21:27:02
+  active: false
+  internal_number: MyString
+  publisher: two
+  part: 1
+  publication_year: 1
+  page_count: 1
+  publication_place: 1
+  licence_end_at: 2025-03-07 21:27:02
+  sale_start_at: 2025-03-07 21:27:02
+  sale_end_at: 2025-03-07 21:27:02
+  url: MyString
+  sponsored: false

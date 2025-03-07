@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  base_price: 9.99
+  price: 9.99
+  currency: one
+  ebook: one
+  valid_from: 2025-03-07
+  valid_to: 2025-03-07
+  active: false
+
+two:
+  base_price: 9.99
+  price: 9.99
+  currency: two
+  ebook: two
+  valid_from: 2025-03-07
+  valid_to: 2025-03-07
+  active: false
