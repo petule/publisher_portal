@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  currency: one
+  ex_rate: 9.99
+  quantity: 1
+  valid_from: 2025-03-08
+  valid_to: 2025-03-08
+  active: false
+
+two:
+  currency: two
+  ex_rate: 9.99
+  quantity: 1
+  valid_from: 2025-03-08
+  valid_to: 2025-03-08
+  active: false
