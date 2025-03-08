@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_07_214814) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_08_074648) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -119,6 +119,18 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_07_214814) do
     t.index ["series_id"], name: "index_ebooks_on_series_id"
   end
 
+  create_table "exchange_rates", force: :cascade do |t|
+    t.bigint "currency_id", null: false
+    t.decimal "ex_rate"
+    t.integer "quantity"
+    t.date "valid_from"
+    t.date "valid_to"
+    t.boolean "active"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["currency_id"], name: "index_exchange_rates_on_currency_id"
+  end
+
   create_table "languages", force: :cascade do |t|
     t.string "name"
     t.string "code"
@@ -126,6 +138,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_07_214814) do
     t.boolean "active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "currency_id"
+    t.index ["currency_id"], name: "index_languages_on_currency_id"
   end
 
   create_table "publishers", force: :cascade do |t|
@@ -178,4 +192,5 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_07_214814) do
   add_foreign_key "ebooks", "languages"
   add_foreign_key "ebooks", "publishers"
   add_foreign_key "ebooks", "series"
+  add_foreign_key "exchange_rates", "currencies"
 end
