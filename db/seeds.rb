@@ -71,14 +71,14 @@ lang_sk = Language.where(code: 'sk', url: 'neco.sk', active: true, name: 'sloven
 
 
 puts 'creating authors'
-author_1 = Author.where(first_name: 'prvni', last_name: 'Novar',
-                        content: 'Aliquam erat volutpat. Maecenas aliquet accumsan leo. Nullam feugiat, turpis at pulvinar vulputa').first_or_create!
-author_2 = Author.where(first_name: 'Druhy', last_name: 'Test',
-                        content: 'Aliquam erat volutpat. Maecenas aliquet accumsan leo. Nullam feugiat, turpis at pulvinar vulputa').first_or_create!
-author_3 = Author.where(first_name: 'Treti', last_name: 'Kecal',
-                        content: 'Aliquam erat volutpat. Maecenas aliquet accumsan leo. Nullam feugiat, turpis at pulvinar vulputa').first_or_create!
-author_4 = Author.where(first_name: 'Ctvrty', last_name: 'Dvorak',
-                        content: 'Aliquam erat volutpat. Maecenas aliquet accumsan leo. Nullam feugiat, turpis at pulvinar vulputa').first_or_create!
+5.times do |i|
+  content = "#{i} Aliquam erat volutpat. Maecenas aliquet accumsan leo. Nullam feugiat, turpis at pulvinar vulputa"
+  author_1 = Author.where(first_name: "prvni #{i}", last_name: "Novar #{i}", content: content).first_or_create!
+  author_2 = Author.where(first_name: "Druhy #{i}", last_name: "Test #{i}", content: content).first_or_create!
+  author_3 = Author.where(first_name: "Treti #{i}", last_name: "Kecal #{i}", content: content).first_or_create!
+  author_4 = Author.where(first_name: "Ctvrty #{i}", last_name: "Dvorak #{i}", content: content).first_or_create!
+end
+
 
 puts 'creating publishers and default users'
 publisher_1 = Publisher.where(title: 'prvni', url: 'prvni', active: true,

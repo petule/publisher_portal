@@ -8,6 +8,11 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
 .cl {
     clear: both;
+}
+
+.padding-10 {
+    padding: 10px;
 }

@@ -1,0 +1,49 @@
+<% if @authors.any? %>
+
+  <table data-controller="x">
+    <thead>
+    <tr>
+      <th><%= t('activerecord.attributes.author.full_name') %></th>
+      <th><%= t('activerecord.attributes.author.content') %></th>
+      <th><%= t('activerecord.attributes.author.active') %></th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @authors.each do |author| %>
+      <tr>
+        <td data-label="full_name"><%= author.full_name %></td>
+        <td data-label="contect"><%= author.content_trim %></td>
+        <td data-label="active">
+          <%= content_tag(:i, "", class: "mdi #{author.active ? 'mdi-check-circle text-green-500' : 'mdi-close-circle text-red-500'}") %>
+        </td>
+        <td class="actions-cell">
+          <div class="buttons right nowrap">
+            <button class="button small blue --jb-modal"  data-target="sample-modal-2" type="button">
+              <span class="icon"><i class="mdi mdi-eye"></i></span>
+            </button>
+            <button class="button small red --jb-modal" data-target="sample-modal" type="button">
+              <span class="icon"><i class="mdi mdi-trash-can"></i></span>
+            </button>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+  <%= paginate @authors %>
+
+  <div class="table-pagination">
+    <div class="flex items-center justify-between">
+      <div class="buttons">
+        <button type="button" class="button active">1</button>
+        <button type="button" class="button">2</button>
+        <button type="button" class="button">3</button>
+      </div>
+      <small>Page 1 of 3</small>
+    </div>
+  </div>
+
+<% else %>
+  <p class="padding-10"><%= t('views.authors.no_authors') %></p>
+<% end %>

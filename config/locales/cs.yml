@@ -14,6 +14,14 @@ cs:
         first_name: Jméno
         last_name: Příjmení
         remember_me: "Trvalé přihlášení"
+      author:
+        full_name: Jméno
+        first_name: Jméno
+        last_name: Příjmení
+        degree: Titul
+        content: Popis
+        product_content: Popis produktů
+        active: Aktivní
     errors:
       messages:
         record_invalid: 'Validace je neúspešná: %{errors}'
@@ -188,6 +196,18 @@ cs:
       label_year_to: "Rok vydání do"
       label_isbn: "ISBN / EAN"
       label_format: "Formát"
+    page_entries_info:
+      entry:
+        zero: "entries"
+        one: "entry"
+        other: "entries"
+      one_page:
+        display_entries:
+          zero: "žádní/é %{entry_name} nenalezeno"
+          one: "Zobrazeno <b>1</b> %{entry_name}"
+          other: "Zobrazeno <b>z %{count}</b> %{entry_name}"
+      more_pages:
+        display_entries: "Zebrazeno %{entry_name} <b>%{first}–%{last}</b> z <b>%{total}</b> celkem"
     page:
       search_by_parameters: "Hledání elektronických knih dle parametrů"
       you_order: "Objednáváte"
