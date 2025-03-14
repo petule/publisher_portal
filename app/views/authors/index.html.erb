@@ -16,6 +16,13 @@
       </a>
     </header>
     <div class="card-content">
+
+      <%#= link_to "KUK", authors_path, data: { 'turbo_frame' => 'results' } %>
+      <%= turbo_frame_tag 'results' do %>
+        Loading...
+        <%= link_to "TESTLOAD", authors_path, data: { turbo_frame: 'results', turbo_stream: 'update' } %>
+      <% end %>
+
       <%= turbo_frame_tag 'results' do %>
         <%= render partial: 'authors/authors' %>
       <% end %>

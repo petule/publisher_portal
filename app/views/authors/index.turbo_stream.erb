@@ -1,0 +1,5 @@
+<%#= turbo_stream.prepend 'results', partial: 'categories/ebook/ebooks' , locals: { quote: @quote } %>
+<%#= turbo_stream.update 'results', partial: 'categories/ebook/ebooks' %>
+<%#= turbo_stream.update 'selected', partial: 'categories/ebook/filter/selected' %>
+<%= turbo_stream.update 'results', partial: 'authors/authors' %>
+<%#= turbo_stream.update 'results', partial: 'authors/test' %>

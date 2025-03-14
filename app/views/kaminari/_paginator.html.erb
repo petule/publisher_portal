@@ -25,7 +25,9 @@
           <%= last_page_tag unless current_page.last? %>
         <% end %>
       </div>
-      <small>Page 1 of 3</small>
+      <small>
+        <%= I18n.t('helpers.page_entries_info.more_pages.page_view', page_current: current_page.to_i, total_page: total_pages.to_i) %>
+      </small>
     </div>
   </div>
 <% end -%>

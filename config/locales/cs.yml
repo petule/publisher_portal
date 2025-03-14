@@ -170,6 +170,7 @@ cs:
         other: Při ukládání objektu %{model} došlo ke %{count} chybám a nebylo možné
           jej uložit
   helpers:
+    page_view: "Stránka %{page_current} z %{total}"
     select:
       prompt: Prosím vyberte si
     submit:
@@ -207,7 +208,8 @@ cs:
           one: "Zobrazeno <b>1</b> %{entry_name}"
           other: "Zobrazeno <b>z %{count}</b> %{entry_name}"
       more_pages:
-        display_entries: "Zebrazeno %{entry_name} <b>%{first}–%{last}</b> z <b>%{total}</b> celkem"
+        page_view: "Stránka %{page_current} z %{total_page}"
+        display_entries: "Zobrazeno %{entry_name} <b>%{first}–%{last}</b> z <b>%{total}</b> celkem"
     page:
       search_by_parameters: "Hledání elektronických knih dle parametrů"
       you_order: "Objednáváte"

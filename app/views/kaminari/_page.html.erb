@@ -7,6 +7,10 @@
     per_page:      number of items to fetch per page
     remote:        data-remote
 -%>
-<button type="button" class="button <%= 'active' if page.current? %>">
-  <%= link_to_unless page.current?, page, url, { remote: remote, rel: page.rel } %>
-</button>
+<% if page.current? %>
+  <button type="button" class="button active">
+    <%= page %>
+  </button>
+<% else %>
+  <%= link_to page, url, data: { turbo_frame: "result", turbo_stream: "update" }, class: "button" %>
+<% end %>
