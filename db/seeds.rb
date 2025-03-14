@@ -78,6 +78,12 @@ puts 'creating authors'
   author_3 = Author.where(first_name: "Treti #{i}", last_name: "Kecal #{i}", content: content).first_or_create!
   author_4 = Author.where(first_name: "Ctvrty #{i}", last_name: "Dvorak #{i}", content: content).first_or_create!
 end
+content = "KUK Aliquam erat volutpat. Maecenas aliquet accumsan leo. Nullam feugiat, turpis at pulvinar vulputa"
+author_1 = Author.where(first_name: "prvni", last_name: "Novar", content: content, active: false).first_or_create!
+author_2 = Author.where(first_name: "Druhy", last_name: "Test", content: content, active: false).first_or_create!
+author_3 = Author.where(first_name: "Treti", last_name: "Kecal", content: content, active: false).first_or_create!
+author_4 = Author.where(first_name: "Ctvrty", last_name: "Dvorak", content: content, active: false).first_or_create!
+
 
 
 puts 'creating publishers and default users'

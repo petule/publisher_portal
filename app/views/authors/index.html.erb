@@ -11,18 +11,23 @@
       <p class="card-header-title">
         <span class="icon"><i class="mdi mdi-account-multiple"></i></span><%= t('views.authors.title') %>
       </p>
-      <a href="#" class="card-header-icon">
-        <span class="icon"><i class="mdi mdi-reload"></i></span>
-      </a>
+      <%= form_with url: authors_path, method: :get, data: { controller: 'search-form', turbo_frame: 'result',
+                                                             turbo_stream: 'update' },
+                    class: "control has-icons-left" do |f| %>
+        <div class="field">
+         <div class="field-body">
+            <div class="field">
+              <div class="control icons-left">
+                <%= f.text_field :query, placeholder: t('helpers.placeholder.search'), class: "input",
+                                 data: { "search-form-target": 'input', action: 'keyup->search-form#handleKeyup' } %>
+                <span class="icon left"><i class="mdi mdi-magnify"></i></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
     </header>
     <div class="card-content">
-
-      <%#= link_to "KUK", authors_path, data: { 'turbo_frame' => 'results' } %>
-      <%= turbo_frame_tag 'results' do %>
-        Loading...
-        <%= link_to "TESTLOAD", authors_path, data: { turbo_frame: 'results', turbo_stream: 'update' } %>
-      <% end %>
-
       <%= turbo_frame_tag 'results' do %>
         <%= render partial: 'authors/authors' %>
       <% end %>

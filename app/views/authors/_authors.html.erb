@@ -3,9 +3,9 @@
   <table data-controller="x">
     <thead>
     <tr>
-      <th><%= t('activerecord.attributes.author.full_name') %></th>
-      <th><%= t('activerecord.attributes.author.content') %></th>
-      <th><%= t('activerecord.attributes.author.active') %></th>
+      <th><%= sort_link('full_name', t('activerecord.attributes.author.full_name')) %></th>
+      <th><%= sort_link('content', t('activerecord.attributes.author.content')) %></th>
+      <th><%= sort_link('active', t('activerecord.attributes.author.active')) %></th>
       <th></th>
     </tr>
     </thead>
@@ -32,17 +32,6 @@
     </tbody>
   </table>
   <%= paginate @authors %>
-
-  <div class="table-pagination">
-    <div class="flex items-center justify-between">
-      <div class="buttons">
-        <button type="button" class="button active">1</button>
-        <button type="button" class="button">2</button>
-        <button type="button" class="button">3</button>
-      </div>
-      <small>Page 1 of 3</small>
-    </div>
-  </div>
 
 <% else %>
   <p class="padding-10"><%= t('views.authors.no_authors') %></p>

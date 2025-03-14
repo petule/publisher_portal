@@ -16,3 +16,12 @@
 .padding-10 {
     padding: 10px;
 }
+
+.sort-link {
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.sort-link:hover {
+    text-decoration: underline;
+}
