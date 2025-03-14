@@ -1,0 +1,35 @@
+<%# The container tag
+  - available local variables
+    current_page:  a page object for the currently displayed page
+    total_pages:   total number of pages
+    per_page:      number of items to fetch per page
+    remote:        data-remote
+    paginator:     the paginator that renders the pagination tags inside
+    May the one who poorly integrated turbo_stream into the Kaminari gem be struck by a dreadful curse!
+    May his shit turn into a hedgehog just as it's coming out, forever causing them frustration, just as I spent two long days fixing this!
+-%>
+
+<%= paginator.render do -%>
+  <div class="table-pagination">
+    <div class="flex items-center justify-between">
+      <div class="buttons">
+        <%= first_page_tag unless current_page.first? %>
+        <%= prev_page_tag unless current_page.first? %>
+        <% each_page do |page| -%>
+          <% if page.display_tag? -%>
+            <%= page_tag page %>
+          <% elsif !page.was_truncated? -%>
+            <%= gap_tag %>
+          <% end -%>
+        <% end -%>
+        <% unless current_page.out_of_range? %>
+          <%= next_page_tag unless current_page.last? %>
+          <%= last_page_tag unless current_page.last? %>
+        <% end %>
+      </div>
+      <small>
+        <%= I18n.t('helpers.page_entries_info.more_pages.page_view', page_current: current_page.to_i, total_page: total_pages.to_i) %>
+      </small>
+    </div>
+  </div>
+<% end -%>

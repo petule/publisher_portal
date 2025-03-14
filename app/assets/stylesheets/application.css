@@ -8,6 +8,20 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
 .cl {
     clear: both;
+}
+
+.padding-10 {
+    padding: 10px;
+}
+
+.sort-link {
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.sort-link:hover {
+    text-decoration: underline;
 }

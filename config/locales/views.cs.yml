@@ -1,0 +1,26 @@
+cs:
+  title:
+    default: Administrace pro nakladatele
+    parent: Databook
+  description:
+    default: Administrace pro nakladatele
+  nav:
+    dashboard:
+      title: Dashboard
+    general:
+      title:
+    lists:
+      title: Přehledy
+      authors: Autoři
+  views:
+    authors:
+      title: Autoři
+      not_found: Autor nenalezen
+      ebooks_empty: Žádné eknihy
+      no_authors: Žádní autoři
+    pagination:
+      first: "&laquo; První"
+      last: "Poslední &raquo;"
+      previous: "&lsaquo; Předchozí"
+      next: "Další &rsaquo;"
+      truncate: "&hellip;"
