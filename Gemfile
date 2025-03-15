@@ -40,7 +40,6 @@ gem "thruster", require: false
 # gem "image_processing", "~> 1.2"
 
 gem "devise"
-gem "avo"
 gem "pundit"
 gem "pg"
 gem "sidekiq"
@@ -68,4 +67,4 @@ end
 gem "tailwindcss-rails", "~> 4.2"
 gem 'draper'
 gem 'kaminari'
-gem 'pundit'
+# Add one of the following in your Gemfile depending on the tier you are on.

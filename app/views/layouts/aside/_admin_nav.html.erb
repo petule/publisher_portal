@@ -1,7 +1,8 @@
 <aside class="aside is-placed-left is-expanded">
   <div class="aside-tools">
     <div>
-      <%= t('title.default') %> <b class="font-black"><%= t('title.parent') %></b>
+      <%= t('title.admin_title') %> <b class="font-black"><%= t('title.parent') %></b>
+      <br />
       <small>
         <%= "#{PublisherPortal::VERSION} (#{environment})" %>
       </small>
@@ -11,7 +12,7 @@
     <p class="menu-label">General</p>
     <ul class="menu-list">
       <li class="active">
-        <%= link_to root_path, title: t('nav.dashboard.title') do %>
+        <%= link_to admin_root_path, title: t('nav.dashboard.title') do %>
           <span class="icon"><i class="mdi mdi-desktop-mac"></i></span>
           <span class="menu-item-label"><%= t('nav.dashboard.title') %></span>
         <% end %>
@@ -22,6 +23,12 @@
       <%= t('nav.lists.title') %>
     </p>
     <ul class="menu-list">
+      <li class="--set-active-tables-html <%= active_if('admin/publishers') %>">
+        <%= link_to admin_publishers_path, title: t('admin_nav.lists.publishers') do %>
+          <span class="icon"></span>
+          <span class="menu-item-label"><%= t('admin_nav.lists.publishers') %></span>
+        <% end %>
+      </li>
       <% if policy(Author).index? %>
         <li class="--set-active-tables-html <%= active_if('authors') %>">
           <%= link_to authors_path, title: t('nav.lists.authors') do %>

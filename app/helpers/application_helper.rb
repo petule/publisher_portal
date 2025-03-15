@@ -11,4 +11,15 @@ module ApplicationHelper
       params[:controller] == controller
     end
   end
+
+  def environment
+    return 'production' if Rails.env.production?
+    return 'test' if Rails.env.test?
+
+    'dev'
+  end
+
+  def user_policy
+    @user_policy ||= UserPolicy.new(current_user)
+  end
 end

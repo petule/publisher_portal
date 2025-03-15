@@ -4,6 +4,16 @@ cs:
     parent: Databook
   description:
     default: Administrace pro nakladatele
+  admin_title:
+    default: Správce pro administraci pro nakladatele
+    parent: Databook
+  admin_nav:
+    lists:
+      title: Přehledy
+      publishers: Nakladatelé
+      users: Uživatelé
+      settings: Nastavení
+
   nav:
     dashboard:
       title: Dashboard
@@ -13,6 +23,11 @@ cs:
       title: Přehledy
       authors: Autoři
   views:
+    admin:
+      title: Správce
+      back: Zpět do administrace
+      dashboad:
+        title: Dashboad
     authors:
       title: Autoři
       not_found: Autor nenalezen
