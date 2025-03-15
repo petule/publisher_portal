@@ -1,5 +1,6 @@
 class AuthorsController < ApplicationController
   def index
+    authorize Author
     @authors = Author.all
     @authors = @authors.search(params[:query]) if params[:query].present?
     @authors = @authors.ordered_by(params[:order], params[:direction]).page(params[:page]).per(per_page).decorate
@@ -10,6 +11,7 @@ class AuthorsController < ApplicationController
   end
 
   def show
+    authorize :author, :show?
   end
 
   private

@@ -19,12 +19,14 @@
       <%= t('nav.lists.title') %>
     </p>
     <ul class="menu-list">
-      <li class="--set-active-tables-html <%= active_if('authors') %>">
-        <%= link_to authors_path, title: t('nav.lists.authors') do %>
-          <span class="icon"></span>
-          <span class="menu-item-label"><%= t('nav.lists.authors') %></span>
-        <% end %>
-      </li>
+      <% if policy(Author).index? %>
+        <li class="--set-active-tables-html <%= active_if('authors') %>">
+          <%= link_to authors_path, title: t('nav.lists.authors') do %>
+            <span class="icon"></span>
+            <span class="menu-item-label"><%= t('nav.lists.authors') %></span>
+          <% end %>
+        </li>
+      <% end %>
       <li class="--set-active-forms-html">
         <a href="forms.html">
           <span class="icon"><i class="mdi mdi-square-edit-outline"></i></span>
