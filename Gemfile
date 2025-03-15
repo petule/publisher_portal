@@ -67,4 +67,4 @@ end
 gem "tailwindcss-rails", "~> 4.2"
 gem 'draper'
 gem 'kaminari'
-# Add one of the following in your Gemfile depending on the tier you are on.
+gem 'simple_command'

@@ -1,0 +1,5 @@
+<h1><%= t('email.user.welcome.hallo', email: @user.email) %></h1>
+<p><%= t('email.user.welcome.title') %></p>
+<p><strong><%= t('email.user.welcome.email') %></strong> <%= @user.email %></p>
+<p><strong><%= t('email.user.welcome.password') %></strong> <%= @password %></p>
+<p><%= t('email.user.welcome.login') %> <%= link_to t('email.user.welcome.web'), root_url, title: t('email.user.welcome.web') %>.</p>

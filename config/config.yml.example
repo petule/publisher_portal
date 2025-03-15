@@ -1,0 +1,15 @@
+default: &default
+  app_name: "Administrace pro nakladatele"
+  support_email: "support@databook.cz"
+
+development:
+  <<: *default
+  from_email: 'development@databook.cz'
+
+test:
+  <<: *default
+  from_email: 'test@databook.cz'
+
+production:
+  <<: *default
+  from_email: 'info@databook.cz'
