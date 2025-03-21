@@ -8,6 +8,7 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+@import "trix.css";
 
 .cl {
     clear: both;

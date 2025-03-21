@@ -1,0 +1,41 @@
+<% if @publishers.any? %>
+  <%= paginate @publishers %>
+  <table>
+    <thead>
+    <tr>
+      <th><%= publisher_sort_link('title', t('activerecord.attributes.publisher.title')) %></th>
+      <th><%= publisher_sort_link('email', t('activerecord.attributes.publisher.email')) %></th>
+      <th><%= publisher_sort_link('address', t('activerecord.attributes.publisher.address')) %></th>
+      <th><%= publisher_sort_link('url', t('activerecord.attributes.publisher.url')) %></th>
+      <th><%= publisher_sort_link('active', t('activerecord.attributes.publisher.active')) %></th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @publishers.each do |publisher| %>
+      <tr>
+        <td data-label="name"><%= publisher.title %></td>
+        <td data-label="email"><%= publisher.email %></td>
+        <td data-label="address"><%= publisher.address_trim %></td>
+        <td data-label="url"><%= publisher.url %></td>
+        <td data-label="active">
+          <%= content_tag(:i, "", class: "mdi #{publisher.active ? 'mdi-check-circle text-green-500' : 'mdi-close-circle text-red-500'}") %>
+        </td>
+        <td class="actions-cell">
+          <div class="buttons right nowrap">
+            <button class="button small blue --jb-modal"  data-target="sample-modal-2" type="button">
+              <span class="icon"><i class="mdi mdi-eye"></i></span>
+            </button>
+            <button class="button small red --jb-modal" data-target="sample-modal" type="button">
+              <span class="icon"><i class="mdi mdi-trash-can"></i></span>
+            </button>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+  <%= paginate @publishers %>
+<% else %>
+  <p class="padding-10"><%= t('views.admin.publishers.no_publishers') %></p>
+<% end %>

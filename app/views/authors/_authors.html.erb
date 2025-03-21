@@ -1,6 +1,6 @@
 <% if @authors.any? %>
-
-  <table data-controller="x">
+  <%= paginate @authors %>
+  <table>
     <thead>
     <tr>
       <th><%= sort_link('full_name', t('activerecord.attributes.author.full_name')) %></th>

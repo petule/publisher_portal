@@ -22,6 +22,13 @@ cs:
         content: Popis
         product_content: Popis produktů
         active: Aktivní
+      publisher:
+        title: Jméno
+        address: Adresa
+        url: url
+        content: Popis
+        email: Email
+        active: Aktivní
     errors:
       messages:
         record_invalid: 'Validace je neúspešná: %{errors}'
@@ -174,6 +181,7 @@ cs:
     select:
       prompt: Prosím vyberte si
     submit:
+      cancel: Zpět
       create: Vytvořit %{model}
       submit: Uložit %{model}
       update: Aktualizovat %{model}

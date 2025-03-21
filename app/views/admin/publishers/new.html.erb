@@ -6,6 +6,7 @@
   </div>
 </section>
 <section class="section main-section">
-  <%= turbo_frame_tag "publisher_form", data: { fade_out_target: "frame" } %>
-  <%= render 'admin/publishers/index' %>
+  <%= turbo_frame_tag "publisher_form" do %>
+    <%= render partial: 'admin/publishers/form' %>
+  <% end %>
 </section>

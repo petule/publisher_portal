@@ -28,6 +28,18 @@ cs:
       back: Zpět do administrace
       dashboad:
         title: Dashboad
+      publishers:
+        title: Nakladatelé
+        new_button: Nový nakladatel
+        not_found: Nakladatel nenalezen
+        ebooks_empty: Žádné eknihy
+        no_publishers: Žádní nakladatelé
+
+        new:
+          title: Nový nakladatel
+          submit: Vytvořit nakladatele
+        edit:
+          title: Úprava nakladatele
     authors:
       title: Autoři
       not_found: Autor nenalezen
