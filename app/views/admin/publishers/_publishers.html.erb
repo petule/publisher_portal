@@ -1,0 +1,23 @@
+<% if @publishers.any? %>
+  <%= paginate @publishers %>
+  <table>
+    <thead>
+    <tr>
+      <th><%= publisher_sort_link('title', t('activerecord.attributes.publisher.title')) %></th>
+      <th><%= publisher_sort_link('email', t('activerecord.attributes.publisher.email')) %></th>
+      <th><%= publisher_sort_link('address', t('activerecord.attributes.publisher.address')) %></th>
+      <th><%= publisher_sort_link('url', t('activerecord.attributes.publisher.url')) %></th>
+      <th><%= publisher_sort_link('active', t('activerecord.attributes.publisher.active')) %></th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody id="publishers-list">
+    <% @publishers.each do |publisher| %>
+      <%= render partial: 'admin/publishers/publisher', locals: { publisher: publisher } %>
+    <% end %>
+    </tbody>
+  </table>
+  <%= paginate @publishers %>
+<% else %>
+  <p class="padding-10"><%= t('views.admin.publishers.no_publishers') %></p>
+<% end %>

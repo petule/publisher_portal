@@ -4,6 +4,16 @@ cs:
     parent: Databook
   description:
     default: Administrace pro nakladatele
+  admin_title:
+    default: Správce pro administraci pro nakladatele
+    parent: Databook
+  admin_nav:
+    lists:
+      title: Přehledy
+      publishers: Nakladatelé
+      users: Uživatelé
+      settings: Nastavení
+
   nav:
     dashboard:
       title: Dashboard
@@ -13,6 +23,31 @@ cs:
       title: Přehledy
       authors: Autoři
   views:
+    admin:
+      title: Správce
+      back: Zpět do administrace
+      dashboad:
+        title: Dashboad
+      publishers:
+        title: Nakladatelé
+        new_button: Nový nakladatel
+        edit_button: Úprava nakladatel
+        not_found: Nakladatel nenalezen
+        ebooks_empty: Žádné eknihy
+        no_publishers: Žádní nakladatelé
+        create_success: Nakladatel byl vytvořen
+        update_success: Nakladatel byl upraven
+        new:
+          title: Nový nakladatel
+          submit: Vytvořit nakladatele
+          user_name: Uživatelské údaje
+          user_name_title: bude vytvořen přístup se stejným emailem jako má nakladatel
+        edit:
+          title: Úprava nakladatele
+          submit: Upravit nakladatele
+        errors:
+          publisher: Nakladatel
+          user: Uživatelské údaje
     authors:
       title: Autoři
       not_found: Autor nenalezen

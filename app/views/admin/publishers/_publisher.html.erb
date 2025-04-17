@@ -1,0 +1,3 @@
+<tr id="publisher_<%= publisher.id %>" class="<%= 'highlight' if local_assigns[:highlight] %>">
+  <%= render partial: 'admin/publishers/publisher_items', locals: { publisher: publisher } %>
+</tr>

@@ -1,0 +1,1 @@
+PublisherPortal::VERSION = '0.0.1'.freeze

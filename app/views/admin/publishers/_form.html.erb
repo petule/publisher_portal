@@ -1,0 +1,107 @@
+<%= turbo_frame_tag 'publisher_notice' %>
+<section class="section main-section" data-controller="fade-out" data-fade-out-target="frame" data-auto-fade-out-target="frame">
+  <div class="card mb-6">
+    <header class="card-header">
+      <p class="card-header-title">
+        <span class="icon"><i class="mdi mdi-ballot"></i></span>
+        <%= @publisher.persisted? ? t('views.admin.publishers.edit.title') : t('views.admin.publishers.new.title') %>
+      </p>
+    </header>
+    <div class="card-content">
+      <%= turbo_frame_tag 'publisher_errors' %>
+      <%= form_with model: @publisher, url: @publisher.persisted? ? admin_publisher_path(@publisher) : admin_publishers_path,
+                    data: { turbo: true } do |f| %>
+        <div class="field">
+          <%= f.label :title, class: "label" %>
+          <div class="control">
+            <%= f.text_field :title, class: "input", placeholder: t('activerecord.attributes.publisher.title') %>
+          </div>
+        </div>
+
+        <div class="field">
+          <%= f.label :address, class: "label" %>
+          <div class="control">
+            <%= f.text_field :address, class: "input", placeholder: t('activerecord.attributes.publisher.address') %>
+          </div>
+        </div>
+
+        <div class="field">
+          <%= f.label :url, class: "label" %>
+          <div class="control">
+            <%= f.text_field :url, class: "input", placeholder: t('activerecord.attributes.publisher.url') %>
+          </div>
+        </div>
+
+        <div class="field">
+          <%= f.label :email, class: "label" %>
+          <div class="control icons-left">
+            <%= f.email_field :email, class: "input", placeholder: t('activerecord.attributes.publisher.email'),
+              value: @publisher.email %>
+            <span class="icon left"><i class="mdi mdi-mail"></i></span>
+          </div>
+        </div>
+
+        <div class="field">
+          <%= f.label :active, class: "label" %>
+          <div class="control">
+            <%= f.check_box :active, class: "checkbox" %>
+          </div>
+        </div>
+
+        <div class="field">
+          <%= f.label :content, class: "label" %>
+          <div class="control">
+            <%= f.rich_text_area :content, class: "textarea",
+              placeholder: t('activerecord.attributes.publisher.content'), data: { controller: 'trix' } %>
+          </div>
+        </div>
+        <% unless @publisher.persisted? %>
+          <fieldset>
+            <div class="field">
+              <p>
+                <strong><%= t('views.admin.publishers.new.user_name') %></strong>
+                <small><%= t('views.admin.publishers.new.user_name_title') %></small>
+              </p>
+            </div>
+
+            <div class="field">
+              <%= f.fields_for :user do |user_fields| %>
+                <div class="field">
+                  <%= user_fields.label :first_name, t('activerecord.attributes.user.first_name'), class: "label" %>
+                  <div class="control">
+                    <%= user_fields.text_field :first_name, class: "input",
+                      placeholder: t('activerecord.attributes.user.first_name') %>
+                  </div>
+                </div>
+
+                <div class="field">
+                  <%= user_fields.label :last_name, t('activerecord.attributes.user.last_name'), class: "label" %>
+                  <div class="control">
+                    <%= user_fields.text_field :last_name, class: "input",
+                      placeholder: t('activerecord.attributes.user.last_name') %>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </fieldset>
+        <% end %>
+        <hr>
+
+        <div class="field grouped">
+          <div class="control">
+            <%= f.submit @publisher.persisted? ? t('views.admin.publishers.edit.submit') : t('views.admin.publishers.new.submit'), class: "button green" %>
+          </div>
+          <div class="control">
+            <% if @turbo_request %>
+              <%= button_tag t('helpers.submit.cancel'), type: "reset", class: "button",
+                             data: { action: "fade-out#remove" } %>
+            <% else %>
+              <%= link_to t('helpers.submit.cancel'), admin_publishers_path, class: "button", data: { turbo_frame: "_top" } %>
+            <% end %>
+          </div>
+        </div>
+
+      <% end %>
+    </div>
+  </div>
+</section>

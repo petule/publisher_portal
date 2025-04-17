@@ -6,6 +6,8 @@ cs:
     eur: 'EUR'
     usd: 'USD'
   activerecord:
+    models:
+      publisher: Nakladatel
     attributes:
       user:
         email: "E-mail"
@@ -21,6 +23,13 @@ cs:
         degree: Titul
         content: Popis
         product_content: Popis produktů
+        active: Aktivní
+      publisher:
+        title: Jméno
+        address: Adresa
+        url: url
+        content: Popis
+        email: Email
         active: Aktivní
     errors:
       messages:
@@ -174,6 +183,8 @@ cs:
     select:
       prompt: Prosím vyberte si
     submit:
+      close: Zavřít
+      cancel: Zpět
       create: Vytvořit %{model}
       submit: Uložit %{model}
       update: Aktualizovat %{model}

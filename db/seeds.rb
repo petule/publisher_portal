@@ -87,16 +87,16 @@ author_4 = Author.where(first_name: "Ctvrty", last_name: "Dvorak", content: cont
 
 
 puts 'creating publishers and default users'
-publisher_1 = Publisher.where(title: 'prvni', url: 'prvni', active: true,
+publisher_1 = Publisher.where(title: 'prvni', url: 'prvni.com', active: true, email: 'publisher1.gmail.com',
                                content: 'Aliquam erat volutpat. Maecenas aliquet accumsan leo. Nullam feugiat, turpis at pulvinar vulputa' ).first_or_create!
 default_user(publisher_1)
-publisher_2 = Publisher.where(title: 'Druhy', url: 'druhy', active: true,
+publisher_2 = Publisher.where(title: 'Druhy', url: 'druhy.com', active: true, email: 'publisher2.gmail.com',
                                content: 'Aliquam erat volutpat. Maecenas aliquet accumsan leo. Nullam feugiat, turpis at pulvinar vulputa' ).first_or_create!
 default_user(publisher_2)
-publisher_3 = Publisher.where(title: 'Treti', url: 'treti', active: true,
+publisher_3 = Publisher.where(title: 'Treti', url: 'treti.com', active: true, email: 'publisher3.gmail.com',
                                content: 'Aliquam erat volutpat. Maecenas aliquet accumsan leo. Nullam feugiat, turpis at pulvinar vulputa' ).first_or_create!
 default_user(publisher_3)
-publisher_4 = Publisher.where(title: 'Ctvrty', url: 'ctvrty', active: true,
+publisher_4 = Publisher.where(title: 'Ctvrty', url: 'ctvrty.com', active: true, email: 'publisher4.gmail.com',
                                content: 'Aliquam erat volutpat. Maecenas aliquet accumsan leo. Nullam feugiat, turpis at pulvinar vulputa' ).first_or_create!
 default_user(publisher_4)
 

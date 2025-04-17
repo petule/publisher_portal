@@ -37,10 +37,9 @@ gem "kamal", require: false
 gem "thruster", require: false
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-# gem "image_processing", "~> 1.2"
+gem "image_processing", "~> 1.2"
 
 gem "devise"
-gem "avo"
 gem "pundit"
 gem "pg"
 gem "sidekiq"
@@ -56,7 +55,7 @@ group :development, :test do
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
   gem "web-console"
-  gem 'letter_opener'
+  gem 'letter_opener_web', '~> 3.0'
 end
 
 group :test do
@@ -68,4 +67,4 @@ end
 gem "tailwindcss-rails", "~> 4.2"
 gem 'draper'
 gem 'kaminari'
-gem 'pundit'
+gem 'simple_command'

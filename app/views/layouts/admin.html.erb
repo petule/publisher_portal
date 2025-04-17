@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <%= render 'layouts/head' %>
+
+  <body>
+    <div id="app">
+      <% if notice.present? %>
+        <p class="notice alert alert-success"><%= notice %></p>
+      <% end %>
+
+      <% if alert.present? %>
+        <p class="alert alert-danger"><%= alert %></p>
+      <% end %>
+      <%= yield %>
+    </div>
+  </body>
+</html>

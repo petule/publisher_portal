@@ -1,4 +1,17 @@
 Rails.application.routes.draw do
+  require 'sidekiq/web'
+
+  authenticate :user, ->(user) { user.admin_role? } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
+
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
+  namespace :admin do
+    #get "dashboard", to: "dashboard#index"
+    resources :publishers
+    resources :users
+    root to: 'dashboard#index'
+  end
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

@@ -1,0 +1,12 @@
+cs:
+  email:
+    user:
+      welcome:
+        hallo: Vítejte, %{email}!
+        title: 'Vaše přihlašovací údaje:'
+        email: 'Email:'
+        password: 'Heslo:'
+        login: 'Přihlaste se na '
+        web: 'našem webu'
+        footer: 'Databook'
+        subject: 'Přístupové údaje pro Administraci pro nakladatele'
