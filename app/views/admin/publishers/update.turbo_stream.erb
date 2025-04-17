@@ -1,0 +1,11 @@
+<% if @errors.present? %>
+  <%= turbo_stream.update 'publisher_errors', partial: 'admin/publishers/errors', locals: { errors: @errors } %>
+<% else %>
+  <%= turbo_stream.update "publisher_notice", partial: 'shared/notice', locals: { notice: t('views.admin.publishers.update_success') } %>
+  <%= turbo_stream.prepend "publisher_notice" do %>
+    <div data-controller="auto-fade-out" ></div>
+  <% end %>
+  <%= turbo_stream.update "publisher_#{@publisher.id}" do %>
+    <%= render partial: 'admin/publishers/publisher_items', locals: { publisher: @publisher }, highlight: true %>
+  <% end %>
+<% end %>

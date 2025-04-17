@@ -11,27 +11,9 @@
       <th></th>
     </tr>
     </thead>
-    <tbody>
+    <tbody id="publishers-list">
     <% @publishers.each do |publisher| %>
-      <tr>
-        <td data-label="name"><%= publisher.title %></td>
-        <td data-label="email"><%= publisher.email %></td>
-        <td data-label="address"><%= publisher.address_trim %></td>
-        <td data-label="url"><%= publisher.url %></td>
-        <td data-label="active">
-          <%= content_tag(:i, "", class: "mdi #{publisher.active ? 'mdi-check-circle text-green-500' : 'mdi-close-circle text-red-500'}") %>
-        </td>
-        <td class="actions-cell">
-          <div class="buttons right nowrap">
-            <button class="button small blue --jb-modal"  data-target="sample-modal-2" type="button">
-              <span class="icon"><i class="mdi mdi-eye"></i></span>
-            </button>
-            <button class="button small red --jb-modal" data-target="sample-modal" type="button">
-              <span class="icon"><i class="mdi mdi-trash-can"></i></span>
-            </button>
-          </div>
-        </td>
-      </tr>
+      <%= render partial: 'admin/publishers/publisher', locals: { publisher: publisher } %>
     <% end %>
     </tbody>
   </table>

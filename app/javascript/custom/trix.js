@@ -1,0 +1,1 @@
+Redirecting to https://unpkg.com/trix@2.1.13/dist/trix.js

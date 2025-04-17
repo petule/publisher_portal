@@ -1,0 +1,9 @@
+@keyframes fade-in-highlight {
+    0%   { opacity: 0; background-color: #fffbcc; }
+    50%  { opacity: 1; background-color: #fffbcc; }
+    100% { background-color: transparent; }
+}
+
+.highlight {
+    animation: fade-in-highlight 5s ease-out;
+}
