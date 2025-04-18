@@ -1,12 +1,17 @@
 class UserPolicy < ApplicationPolicy
-  attr_reader :user
+  attr_reader :user, :record
 
-  def initialize(user)
+  def initialize(user, record)
     @user = user
+    @record = record
   end
 
   def admin_access?
     admin?
+  end
+
+  def index?
+    admin? || user&.publisher_admin_role?
   end
 
   def admin?

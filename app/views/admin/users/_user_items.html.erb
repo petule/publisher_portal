@@ -1,0 +1,18 @@
+<td data-label="first_name"><%= user.first_name %></td>
+<td data-label="last_name"><%= user.last_name %></td>
+<td data-label="email"><%= user.email %></td>
+<td data-label="role"><%= user.role %></td>
+<td data-label="publisher_id">
+  <%= user.admin_role? || !user.publisher.present? ? '' : link_to(user.publisher.title, admin_publisher_path(user.publisher)) %>
+</td>
+<td class="actions-cell">
+  <div class="buttons right nowrap">
+    <button class="button small blue --jb-modal"  data-target="sample-modal-2" type="button">
+      <span class="icon"><i class="mdi mdi-eye"></i></span>
+    </button>
+    <%= link_to edit_admin_user_path(user), class: "button small green", title: t('views.admin.users.edit_button'),
+                data: { turbo_frame: "user_form", turbo_stream: 'update' } do %>
+      <span class="icon"><i class="mdi mdi-pencil"></i></span>
+    <% end %>
+  </div>
+</td>

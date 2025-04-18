@@ -1,0 +1,23 @@
+<% if @users.any? %>
+  <%= paginate @users %>
+  <table>
+    <thead>
+    <tr>
+      <th><%= user_sort_link('first_name', t('activerecord.attributes.user.first_name')) %></th>
+      <th><%= user_sort_link('last_name', t('activerecord.attributes.user.last_name')) %></th>
+      <th><%= user_sort_link('email', t('activerecord.attributes.user.email')) %></th>
+      <th><%= user_sort_link('role', t('activerecord.attributes.user.role')) %></th>
+      <th><%= user_sort_link('role', t('activerecord.attributes.user.publisher_id')) %></th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody id="users-list">
+    <% @users.each do |user| %>
+      <%= render partial: 'admin/users/user', locals: { user: user } %>
+    <% end %>
+    </tbody>
+  </table>
+  <%= paginate @users %>
+<% else %>
+  <p class="padding-10"><%= t('views.admin.users.no_users') %></p>
+<% end %>

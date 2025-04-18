@@ -29,6 +29,12 @@
           <span class="menu-item-label"><%= t('admin_nav.lists.publishers') %></span>
         <% end %>
       </li>
+      <li class="--set-active-tables-html <%= active_if('admin/users') %>">
+        <%= link_to admin_users_path, title: t('admin_nav.lists.users') do %>
+          <span class="icon"></span>
+          <span class="menu-item-label"><%= t('admin_nav.lists.users') %></span>
+        <% end %>
+      </li>
       <% if policy(Author).index? %>
         <li class="--set-active-tables-html <%= active_if('authors') %>">
           <%= link_to authors_path, title: t('nav.lists.authors') do %>

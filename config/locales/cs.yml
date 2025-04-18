@@ -15,6 +15,9 @@ cs:
         password_confirmation: "Heslo znovu"
         first_name: Jméno
         last_name: Příjmení
+        role: Role
+        publisher_id: Nakladatel
+        publisher: Nakladatel
         remember_me: "Trvalé přihlášení"
       author:
         full_name: Jméno

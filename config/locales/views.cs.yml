@@ -48,6 +48,23 @@ cs:
         errors:
           publisher: Nakladatel
           user: Uživatelské údaje
+      users:
+        title: Uživatelé
+        new_button: Nový uživatel
+        edit_button: Úprava uživatele
+        not_found: Uživatel nenalezen
+        no_users: Žádní uživatelé
+        create_success: Uživatel byl vytvořen
+        update_success: Uživatel byl upraven
+        new:
+          title: Nový uživatel
+          submit: Vytvořit uživatele
+          user_name: Uživatelské údaje
+        edit:
+          title: Úprava uživatel
+          submit: Upravit uživatel
+        errors:
+          publisher: Uživatel
     authors:
       title: Autoři
       not_found: Autor nenalezen
