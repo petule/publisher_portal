@@ -13,7 +13,6 @@ cs:
       publishers: Nakladatelé
       users: Uživatelé
       settings: Nastavení
-
   nav:
     dashboard:
       title: Dashboard
@@ -76,3 +75,11 @@ cs:
       previous: "&lsaquo; Předchozí"
       next: "Další &rsaquo;"
       truncate: "&hellip;"
+  dials:
+    role:
+      user: uživatel
+      data_master: data master
+      owner: majitel
+      publisher_admin: administrátor
+      admin: administrátor portálu
+

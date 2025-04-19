@@ -8,6 +8,7 @@ class User < ApplicationRecord
   validates :first_name, :last_name, presence: true
   validates :email, uniqueness: true, presence: true
 
+  scope :by_role, ->(role) { where(role: role) }
   scope :ordered_by, ->(column, direction = 'asc') {
     allowed_columns = column_names.map(&:to_s) # Získá seznam povolených sloupců
 
@@ -18,6 +19,6 @@ class User < ApplicationRecord
   }
   scope :search, ->(query) {
     left_joins(:publisher)
-      .where("LOWER(first_name) LIKE unaccent(:query) OR LOWER(last_name) LIKE unaccent(:query)  OR LOWER(role) LIKE unaccent(:query) OR LOWER(email) LIKE unaccent(:query) OR LOWER(publishers.title)  LIKE unaccent(:query)", query: "%#{query.downcase}%")
+      .where("LOWER(first_name) LIKE unaccent(:query) OR LOWER(last_name) LIKE unaccent(:query) OR LOWER(users.email) LIKE unaccent(:query) OR LOWER(publishers.title) LIKE unaccent(:query)", query: "%#{query.downcase}%")
   }
 end

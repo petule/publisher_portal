@@ -17,4 +17,7 @@ class UserDecorator < Draper::Decorator
   #     end
   #   end
 
+  def role
+    user.role.present? ? I18n.t("dials.role.#{user.role}") : ''
+  end
 end

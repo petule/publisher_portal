@@ -68,3 +68,4 @@ gem "tailwindcss-rails", "~> 4.2"
 gem 'draper'
 gem 'kaminari'
 gem 'simple_command'
+gem 'tom-select-rails'

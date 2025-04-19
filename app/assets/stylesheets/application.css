@@ -7,7 +7,9 @@
  * depending on specificity.
  *
  * Consider organizing styles into separate files for maintainability.
+ *= require tom-select-rails
  */
+
 
 .cl {
     clear: both;
@@ -24,4 +26,30 @@
 
 .sort-link:hover {
     text-decoration: underline;
+}
+
+.filter-form {
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+
+  label {
+      padding-top: .6rem;
+      padding-bottom: .75rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+  }
+}
+
+.flex-display {
+    display: flex;
+}
+
+.flex-grow-1 {
+    flex-grow: 1;
+}
+
+.flex-grow-2 {
+    flex-grow: 2;
 }
