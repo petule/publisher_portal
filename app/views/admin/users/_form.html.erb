@@ -1,0 +1,78 @@
+<%= turbo_frame_tag 'user_notice' %>
+<section class="section main-section" data-controller="fade-out" data-fade-out-target="frame" data-auto-fade-out-target="frame">
+  <div class="card mb-6">
+    <header class="card-header">
+      <p class="card-header-title">
+        <span class="icon"><i class="mdi mdi-ballot"></i></span>
+        <%= @user.persisted? ? t('views.admin.users.edit.title') : t('views.admin.users.new.title') %>
+      </p>
+    </header>
+    <div class="card-content">
+      <%= turbo_frame_tag 'user_errors' %>
+      <%= form_with model: @user, url: @user.persisted? ? admin_user_path(@user) : admin_users_path,
+                    data: { turbo: true } do |f| %>
+        <div class="field">
+          <%= f.label :first_name, class: "label" %>
+          <div class="control">
+            <%= f.text_field :first_name, class: "input", placeholder: t('activerecord.attributes.user.first_name'),
+                required: true %>
+          </div>
+        </div>
+
+        <div class="field">
+          <%= f.label :last_name, class: "label" %>
+          <div class="control">
+            <%= f.text_field :last_name, class: "input", placeholder: t('activerecord.attributes.user.last_name'),
+                required: true %>
+          </div>
+        </div>
+
+        <div class="field">
+          <%= f.label :email, class: "label" %>
+          <div class="control icons-left">
+            <%= f.email_field :email, class: "input", placeholder: t('activerecord.attributes.user.email'),
+              value: @user.email, required: true %>
+            <span class="icon left"><i class="mdi mdi-mail"></i></span>
+          </div>
+        </div>
+
+        <div class="field">
+          <%= f.label :role, class: "label" %>
+          <div class="control">
+            <%= f.select :role, options_for_select(User.roles.map { |role, key| [t("dials.role.#{role}"), key] }),
+                         { include_blank: false }, class: "input ",
+                data: { controller: "slim-select", "search-form-target": 'select', action: 'search-form#handleChange' },
+                placeholder: t('activerecord.attributes.user.role') %>
+          </div>
+        </div>
+
+        <div class="field">
+          <%= f.label :publisher, class: "label" %>
+          <div class="control">
+            <%= f.select :publisher_id,
+              options_from_collection_for_select(Publisher.all, :id, :title, f.object.publisher_id),
+              { include_blank: true }, class: "input",
+              data: { controller: "slim-select", "search-form-target": "select", action: "search-form#handleChange" },
+              placeholder: t("activerecord.attributes.user.publisher") %>
+          </div>
+        </div>
+
+        <hr>
+
+        <div class="field grouped">
+          <div class="control">
+            <%= f.submit @user.persisted? ? t('views.admin.users.edit.submit') : t('views.admin.users.new.submit'), class: "button green" %>
+          </div>
+          <div class="control">
+            <% if @turbo_request %>
+              <%= button_tag t('helpers.submit.cancel'), type: "reset", class: "button",
+                             data: { action: "fade-out#remove" } %>
+            <% else %>
+              <%= link_to t('helpers.submit.cancel'), admin_users_path, class: "button", data: { turbo_frame: "_top" } %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>

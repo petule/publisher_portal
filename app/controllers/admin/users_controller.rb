@@ -23,7 +23,37 @@ class Admin::UsersController < ApplicationController
   def destroy
   end
 
+  def new
+    @user = User.new
+    respond_to do |format|
+      format.html
+      format.turbo_stream
+    end
+  end
+
+  def create
+    creator = Users::Creator.call(user_params)
+    if creator.success?
+      @user = creator.result.decorate
+      respond_to do |format|
+        format.html { redirect_to admin_users_path, notice: t('views.admin.users.create_success') }
+        format.turbo_stream
+      end
+    else
+      @errors = creator.errors
+      respond_to do |format|
+        format.html { render :new, status: :unprocessable_entity }
+        format.turbo_stream
+      end
+    end
+  end
+
   private
+
+  def user_params
+    params.require(:user).permit(:first_name, :last_name, :email, :publisher_id).
+      merge(role: params.dig(:user, :role).to_i)
+  end
 
   def per_page
     params[:per_page] || UserDecorator::PER_PAGES_DEFAULT

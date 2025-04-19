@@ -53,7 +53,7 @@ def calc_from_rate(price, currency)
 end
 
 def default_user(publisher, role = :user)
-  User.find_or_create_by!(email: "publisher_#{publisher.id}@gmail.com", role: role,
+  User.find_or_create_by!(email: "publisher_#{publisher.id}@gmail.com", role: role, publisher: publisher,
     first_name: publisher.title, last_name: "#{publisher.title}_lastname") do |user|
     user.password = 'password'
     user.password_confirmation = 'password'
