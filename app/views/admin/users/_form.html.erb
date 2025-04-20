@@ -10,7 +10,7 @@
     <div class="card-content">
       <%= turbo_frame_tag 'user_errors' %>
       <%= form_with model: @user, url: @user.persisted? ? admin_user_path(@user) : admin_users_path,
-                    data: { turbo: true } do |f| %>
+                    data: { turbo: @turbo_request } do |f| %>
         <div class="field">
           <%= f.label :first_name, class: "label" %>
           <div class="control">

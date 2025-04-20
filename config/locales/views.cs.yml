@@ -48,12 +48,17 @@ cs:
           publisher: Nakladatel
           user: Uživatelské údaje
       users:
+        destroy_modal:
+          title: Potvrzení
+          text: Opravdu chcete smazat uživatele %{name}?
+          cancel: Zrušit
         title: Uživatelé
         new_button: Nový uživatel
         edit_button: Úprava uživatele
         not_found: Uživatel nenalezen
         no_users: Žádní uživatelé
         create_success: Uživatel byl vytvořen
+        destroy_success: Uživatel byl smazán
         update_success: Uživatel byl upraven
         new:
           title: Nový uživatel
@@ -82,4 +87,9 @@ cs:
       owner: majitel
       publisher_admin: administrátor
       admin: administrátor portálu
-
+  modals:
+    destroy:
+      title: Potvrzení
+      text: Opravdu chcete smazat uživatele %{name}?
+      cancel: Zrušit
+      confirm: Smazat

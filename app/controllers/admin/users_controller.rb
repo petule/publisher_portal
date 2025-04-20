@@ -15,12 +15,42 @@ class Admin::UsersController < ApplicationController
   end
 
   def edit
+    @user = User.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.turbo_stream
+    end
   end
 
   def update
+    updator = Users::Updator.call(params[:id], user_params)
+    if updator.success?
+      @user = updator.result.decorate
+      respond_to do |format|
+        format.html { redirect_to admin_users_path, notice: t('views.admin.users.update_success') }
+        format.turbo_stream
+      end
+    else
+      @errors = updator.errors
+      respond_to do |format|
+        @user = User.find(params[:id])
+        format.html {
+          flash.now[:alert] = @errors.values.flatten.join(", ")
+          render :edit, status: :unprocessable_entity
+        }
+        format.turbo_stream
+      end
+    end
   end
 
   def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+
+    respond_to do |format|
+      format.turbo_stream
+      format.html { redirect_to admin_users_path, notice: "Uživatel byl smazán." }
+    end
   end
 
   def new

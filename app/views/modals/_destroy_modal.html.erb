@@ -1,0 +1,18 @@
+<div id="modal-destroy" class="modal" data-controller="modal">
+  <div class="modal-background" data-action="click->modal#close"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title"><%= t('views.admin.users.destroy_modal.title') %></p>
+    </header>
+    <section class="modal-card-body">
+      <p data-modal-target="question"></p>
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button" data-action="click->modal#close">
+        <%= t('modal.destroy.cancel') %>
+      </button>
+      <%= link_to t('modals.destroy.confirm'), '#', method: :delete, class: 'button red',
+        data: { turbo_method: :delete, modal_target: 'confirmButton' } %>
+    </footer>
+  </div>
+</div>

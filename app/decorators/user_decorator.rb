@@ -20,4 +20,8 @@ class UserDecorator < Draper::Decorator
   def role
     user.role.present? ? I18n.t("dials.role.#{user.role}") : ''
   end
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end

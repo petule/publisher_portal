@@ -7,12 +7,16 @@
 </td>
 <td class="actions-cell">
   <div class="buttons right nowrap">
-    <button class="button small blue --jb-modal"  data-target="sample-modal-2" type="button">
-      <span class="icon"><i class="mdi mdi-eye"></i></span>
-    </button>
     <%= link_to edit_admin_user_path(user), class: "button small green", title: t('views.admin.users.edit_button'),
                 data: { turbo_frame: "user_form", turbo_stream: 'update' } do %>
       <span class="icon"><i class="mdi mdi-pencil"></i></span>
+    <% end %>
+    <%= button_tag type: 'button', class: 'button small red',
+        data: { controller: "modal", action: "click->modal#open",
+               target: "modal-destroy", destroy_url: admin_user_path(user),
+               question_text: t('views.admin.users.destroy_modal.text', name: user.full_name)
+        } do %>
+       <span class="icon"><i class="mdi mdi-trash-can"></i></span>
     <% end %>
   </div>
 </td>

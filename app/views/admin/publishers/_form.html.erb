@@ -10,7 +10,7 @@
     <div class="card-content">
       <%= turbo_frame_tag 'publisher_errors' %>
       <%= form_with model: @publisher, url: @publisher.persisted? ? admin_publisher_path(@publisher) : admin_publishers_path,
-                    data: { turbo: true } do |f| %>
+                    data: { turbo: @turbo_request } do |f| %>
         <div class="field">
           <%= f.label :title, class: "label" %>
           <div class="control">
