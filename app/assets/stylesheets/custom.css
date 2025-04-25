@@ -7,3 +7,12 @@
 .highlight {
     animation: fade-in-highlight 5s ease-out;
 }
+
+label.required:after {
+    content: " *";
+    color: red;
+}
+
+.red-color {
+    color: red;
+}

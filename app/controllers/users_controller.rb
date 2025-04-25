@@ -1,17 +1,10 @@
-class Admin::UsersController < ApplicationController
-  def index
-    authorize User
-    @users = User.all
-    @users = @users.search(params[:query]) if params[:query].present?
-    @users = @users.by_role(params[:role]) if params[:role].present?
-    @users = @users.ordered_by(params[:order], params[:direction]).page(params[:page]).per(per_page).decorate
+class UsersController < ApplicationController
+  def profile
+    @user = current_user
     respond_to do |format|
       format.html
       format.turbo_stream
     end
-  end
-
-  def show
   end
 
   def edit
@@ -27,7 +20,7 @@ class Admin::UsersController < ApplicationController
     if updator.success?
       @user = updator.result.decorate
       respond_to do |format|
-        format.html { redirect_to admin_users_path, notice: t('views.admin.users.update_success') }
+        format.html { redirect_to profile_path, notice: t('views.users.update_success') }
         format.turbo_stream
       end
     else
@@ -81,8 +74,7 @@ class Admin::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :publisher_id, :avatar).
-      merge(role: params.dig(:user, :role).to_i)
+    params.require(:user).permit(:first_name, :last_name, :email, :publisher_id, :avatar)
   end
 
   def per_page

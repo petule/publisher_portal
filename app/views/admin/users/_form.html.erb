@@ -12,6 +12,25 @@
       <%= form_with model: @user, url: @user.persisted? ? admin_user_path(@user) : admin_users_path,
                     data: { turbo: @turbo_request } do |f| %>
         <div class="field">
+          <% if f.object.avatar.attached? %>
+            <div class="image w-48 h-48 mx-auto">
+              <%= image_tag f.object.avatar_full, class: "rounded-full" %>
+            </div>
+          <% end %>
+          <%= f.label :avatar, class: "label" %>
+          <div class="field-body">
+            <div class="field file">
+              <label class="upload control">
+                <a class="button blue">
+                  Upload
+                </a>
+                <%= f.file_field :avatar, class: "input", accept: "image/*" %>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="field">
           <%= f.label :first_name, class: "label" %>
           <div class="control">
             <%= f.text_field :first_name, class: "input", placeholder: t('activerecord.attributes.user.first_name'),
@@ -39,7 +58,8 @@
         <div class="field">
           <%= f.label :role, class: "label" %>
           <div class="control">
-            <%= f.select :role, options_for_select(User.roles.map { |role, key| [t("dials.role.#{role}"), key] }),
+            <%= f.select :role, options_for_select(User.roles.map { |role, key| [t("dials.role.#{role}"), key] },
+                                                   User.roles[@user.role]),
                          { include_blank: false }, class: "input ",
                 data: { controller: "slim-select", "search-form-target": 'select', action: 'search-form#handleChange' },
                 placeholder: t('activerecord.attributes.user.role') %>

@@ -1,3 +1,10 @@
+<td>
+  <% if user.avatar.attached? %>
+    <div class="user-avatar">
+      <%= image_tag user.avatar_thumb, class: "rounded-full" %>
+    </div>
+  <% end %>
+</td>
 <td data-label="first_name"><%= user.first_name %></td>
 <td data-label="last_name"><%= user.last_name %></td>
 <td data-label="email"><%= user.email %></td>

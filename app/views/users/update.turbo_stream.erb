@@ -1,0 +1,6 @@
+<% if @errors.present? %>
+  <%= turbo_stream.update 'user_errors', partial: 'users/errors', locals: { errors: @errors } %>
+<% else %>
+  <%= turbo_stream.update 'profile', partial: 'users/form' %>
+  <%= turbo_stream.update "user_notice", partial: 'shared/notice', locals: { notice: t('views.users.update_success') } %>
+<% end %>

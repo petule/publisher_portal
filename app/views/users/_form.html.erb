@@ -1,0 +1,64 @@
+<%= form_with model: @user, data: { turbo: true } do |f| %>
+  <div class="field">
+    <% if f.object.avatar.attached? %>
+      <div class="image w-48 h-48 mx-auto">
+        <%= image_tag f.object.avatar_full, class: "rounded-full" %>
+      </div>
+    <% end %>
+    <%= f.label :avatar, class: "label" %>
+    <div class="field-body">
+      <div class="field file">
+        <label class="upload control">
+          <a class="button blue">
+            Upload
+          </a>
+          <%= f.file_field :avatar, class: "input", accept: "image/*" %>
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="field">
+    <%= f.label :first_name, class: "label required" %>
+    <div class="control">
+      <%= f.text_field :first_name, class: "input", placeholder: t('activerecord.attributes.user.first_name'),
+                       required: true %>
+    </div>
+  </div>
+  <div class="field">
+    <%= f.label :last_name, class: "label required" %>
+    <div class="control">
+      <%= f.text_field :last_name, class: "input", placeholder: t('activerecord.attributes.user.last_name'), required: true %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= f.label :email, class: "label required" %>
+    <div class="control icons-left">
+      <%= f.email_field :email, class: "input", placeholder: t('activerecord.attributes.user.email'),
+                        value: @user.email, required: true %>
+      <span class="icon left"><i class="mdi mdi-mail"></i></span>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= f.label :role, class: "label" %>
+    <div class="control">
+      <%= t("dials.role.#{@user.role}") %>
+    </div>
+  </div>
+  <% unless @user.admin_role? %>
+    <div class="field">
+      <%= f.label :publisher, class: "label" %>
+      <div class="control">
+        <%= @user.publisher.title  %>
+      </div>
+    </div>
+  <% end %>
+  <%= turbo_frame_tag 'user_errors' %>
+  <%= turbo_frame_tag 'user_notice' %>
+  <hr>
+  <div class="red-color"><%= t('views.required_input') %></div>
+  <div class="control">
+    <%= f.submit t('views.profile.submit'), class: "button green" %>
+  </div>
+<% end %>

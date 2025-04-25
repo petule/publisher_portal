@@ -6,6 +6,15 @@ class UserPolicy < ApplicationPolicy
     @record = record
   end
 
+  def edit?
+    puts "EDITING EDIT #{admin? }|| #{user.id} == #{record.id}"
+    admin? || user.id == record.id
+  end
+
+  def update?
+    edit?
+  end
+
   def admin_access?
     admin?
   end

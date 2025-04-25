@@ -21,7 +21,23 @@ cs:
     lists:
       title: Přehledy
       authors: Autoři
+      profile: Můj profil
   views:
+    user_not_authorized: "Nemáte oprávnění provést tuto akci."
+    required_input: "* Toto pole je povinné"
+    users:
+      title: Uživatelé
+      edit_button: Úprava uživatele
+      update_success: Uživatel byl upraven
+      new:
+        title: Nový uživatel
+        submit: Vytvořit uživatele
+        user_name: Uživatelské údaje
+      edit:
+        title: Úprava uživatel
+        submit: Upravit uživatele
+      errors:
+        publisher: Uživatel
     admin:
       title: Správce
       back: Zpět do administrace
@@ -65,10 +81,12 @@ cs:
           submit: Vytvořit uživatele
           user_name: Uživatelské údaje
         edit:
-          title: Úprava uživatel
-          submit: Upravit uživatel
+          title: Úprava uživatele
+          submit: Upravit uživatele
         errors:
           publisher: Uživatel
+    profile:
+      submit: upravit
     authors:
       title: Autoři
       not_found: Autor nenalezen
