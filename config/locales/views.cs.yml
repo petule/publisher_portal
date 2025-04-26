@@ -26,9 +26,14 @@ cs:
     user_not_authorized: "Nemáte oprávnění provést tuto akci."
     required_input: "* Toto pole je povinné"
     users:
+      password:
+        title: Úprava hesla
+      profile_title: Můj profil
       title: Uživatelé
+      edit_title: Moje údaje
       edit_button: Úprava uživatele
       update_success: Uživatel byl upraven
+      update_password_success: Heslo bylo upraveno
       new:
         title: Nový uživatel
         submit: Vytvořit uživatele
@@ -38,6 +43,8 @@ cs:
         submit: Upravit uživatele
       errors:
         publisher: Uživatel
+        password: Heslo
+        current_password: Aktuální heslo
     admin:
       title: Správce
       back: Zpět do administrace

@@ -7,6 +7,27 @@ class UsersController < ApplicationController
     end
   end
 
+  def update_password
+    @user = User.find(params[:id])
+
+    if @user.update_with_password(password_update_params)
+      bypass_sign_in(@user) # Devise potřeba
+      respond_to do |format|
+        format.html { redirect_to profile_path, notice: t('views.users.password_update_success') }
+        format.turbo_stream
+      end
+    else
+      @errors = @user.errors.messages
+      respond_to do |format|
+        format.html {
+          flash.now[:alert] = @errors.values.flatten.join(", ")
+          render :edit, status: :unprocessable_entity
+        }
+        format.turbo_stream
+      end
+    end
+  end
+
   def edit
     @user = User.find(params[:id])
     respond_to do |format|
@@ -72,6 +93,10 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def password_update_params
+    params.require(:user).permit(:current_password, :password, :password_confirmation)
+  end
 
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :publisher_id, :avatar)
