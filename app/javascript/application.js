@@ -6,6 +6,7 @@
 //window.moment = moment;
 //import "chart_sample"
 import "@hotwired/turbo-rails"
+import "slimselect"
 import "controllers"
 //import "main"
 import "trix"

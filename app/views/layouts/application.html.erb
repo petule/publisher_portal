@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html>
   <%= render 'layouts/head' %>
-
   <body>
+    <div id="js-hook"></div>
     <div id="app">
-      <% if notice.present? %>
-        <p class="notice alert alert-success"><%= notice %></p>
-      <% end %>
+      <% unless @turbo_request %>
+        <% if notice.present? %>
+          <%= render partial: 'shared/notice', locals: { notice: notice} %>
+        <% end %>
 
-      <% if alert.present? %>
-        <p class="alert alert-danger"><%= alert %></p>
+        <% if alert.present? %>
+          <%= render partial: 'shared/alert', locals: { alert: alert} %>
+        <% end %>
       <% end %>
       <%= yield %>
     </div>

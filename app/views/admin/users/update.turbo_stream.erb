@@ -1,0 +1,11 @@
+<% if @errors.present? %>
+  <%= turbo_stream.update 'user_errors', partial: 'admin/users/errors', locals: { errors: @errors } %>
+<% else %>
+  <%= turbo_stream.update "user_notice", partial: 'shared/notice', locals: { notice: t('views.admin.users.update_success') } %>
+  <%= turbo_stream.prepend "user_notice" do %>
+    <div data-controller="auto-fade-out" ></div>
+  <% end %>
+  <%= turbo_stream.prepend "users-list" do %>
+    <%= render @user, highlight: true %>
+  <% end %>
+<% end %>

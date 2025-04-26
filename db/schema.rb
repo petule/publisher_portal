@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_21_134558) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_18_190127) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "unaccent"
@@ -64,6 +64,44 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_21_134558) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.string "title"
+    t.string "url"
+    t.text "content"
+    t.text "parent_categories"
+    t.boolean "active"
+    t.string "seo_title"
+    t.string "seo_description"
+    t.boolean "favourite", default: false
+    t.bigint "language_id", null: false
+    t.bigint "category_type_id", null: false
+    t.bigint "category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["active"], name: "index_categories_on_active"
+    t.index ["category_id"], name: "index_categories_on_category_id"
+    t.index ["category_type_id"], name: "index_categories_on_category_type_id"
+    t.index ["favourite"], name: "index_categories_on_favourite"
+    t.index ["language_id"], name: "index_categories_on_language_id"
+    t.index ["url"], name: "index_categories_on_url"
+  end
+
+  create_table "category_types", force: :cascade do |t|
+    t.string "name"
+    t.string "title"
+    t.string "code"
+    t.text "content"
+    t.boolean "active"
+    t.bigint "language_id", null: false
+    t.string "seo_title"
+    t.string "seo_description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["code"], name: "index_category_types_on_code"
+    t.index ["language_id"], name: "index_category_types_on_language_id"
+  end
+
   create_table "currencies", force: :cascade do |t|
     t.string "code"
     t.datetime "created_at", null: false
@@ -77,6 +115,15 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_21_134558) do
     t.datetime "updated_at", null: false
     t.index ["author_id"], name: "index_ebook_authors_on_author_id"
     t.index ["ebook_id"], name: "index_ebook_authors_on_ebook_id"
+  end
+
+  create_table "ebook_categories", force: :cascade do |t|
+    t.bigint "ebook_id"
+    t.bigint "category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_ebook_categories_on_category_id"
+    t.index ["ebook_id"], name: "index_ebook_categories_on_ebook_id"
   end
 
   create_table "ebook_prices", force: :cascade do |t|
@@ -197,6 +244,10 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_21_134558) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "categories", "categories"
+  add_foreign_key "categories", "category_types"
+  add_foreign_key "categories", "languages"
+  add_foreign_key "category_types", "languages"
   add_foreign_key "ebook_authors", "authors"
   add_foreign_key "ebook_authors", "ebooks"
   add_foreign_key "ebook_prices", "currencies"

@@ -1,0 +1,40 @@
+<div class="card has-table">
+  <header class="card-header">
+    <p class="card-header-title">
+      <span class="icon"><i class="mdi mdi-account-multiple"></i></span><%= t('views.admin.users.title') %>&nbsp;&nbsp;
+      <%= link_to new_admin_user_path, class: "button small blue", title: t('views.admin.users.new_button'),
+                  data: { turbo_frame: "user_form", turbo_stream: 'update' } do %>
+        <span class="icon"><i class="mdi mdi-plus"></i></span>
+      <% end %>
+    </p>
+    <%= form_with url: admin_users_path, method: :get, data: { controller: 'search-form', turbo_frame: 'result',
+                                                                    turbo_stream: 'update' },
+                  class: "control has-icons-left flex-grow-2 filter-form" do |f| %>
+      <div class="field">
+        <div class="field-body flex-display">
+          <div class="field flex-grow-1">
+            <div class="control flex-display">
+              <%= label_tag :role, t('activerecord.attributes.user.role'), class: "label" %>&nbsp;
+              <%= f.select :role, options_for_select(User.roles.map { |role, key| [t("dials.role.#{role}"), key] }),
+                { include_blank: true }, class: "input ",
+                data: { controller: "slim-select", "search-form-target": 'select', action: 'search-form#handleChange' },
+                placeholder: t('activerecord.attributes.user.role') %>&nbsp;&nbsp;
+            </div>
+          </div>
+          <div class="field flex-grow-1">
+            <div class="control icons-left">
+              <%= f.text_field :query, placeholder: t('helpers.placeholder.search'), class: "input",
+                data: { "search-form-target": 'input', action: 'keyup->search-form#handleKeyup' } %>
+              <span class="icon left"><i class="mdi mdi-magnify"></i></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </header>
+  <div class="card-content">
+    <%= turbo_frame_tag 'results' do %>
+      <%= render partial: 'admin/users/users' %>
+    <% end %>
+  </div>
+</div>

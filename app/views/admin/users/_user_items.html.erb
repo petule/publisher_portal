@@ -1,0 +1,29 @@
+<td>
+  <% if user.avatar.attached? %>
+    <div class="user-avatar">
+      <%= image_tag user.avatar_thumb, class: "rounded-full" %>
+    </div>
+  <% end %>
+</td>
+<td data-label="first_name"><%= user.first_name %></td>
+<td data-label="last_name"><%= user.last_name %></td>
+<td data-label="email"><%= user.email %></td>
+<td data-label="role"><%= user.role %></td>
+<td data-label="publisher_id">
+  <%= user.admin_role? || !user.publisher.present? ? '' : link_to(user.publisher.title, admin_publisher_path(user.publisher)) %>
+</td>
+<td class="actions-cell">
+  <div class="buttons right nowrap">
+    <%= link_to edit_admin_user_path(user), class: "button small green", title: t('views.admin.users.edit_button'),
+                data: { turbo_frame: "user_form", turbo_stream: 'update' } do %>
+      <span class="icon"><i class="mdi mdi-pencil"></i></span>
+    <% end %>
+    <%= button_tag type: 'button', class: 'button small red',
+        data: { controller: "modal", action: "click->modal#open",
+               target: "modal-destroy", destroy_url: admin_user_path(user),
+               question_text: t('views.admin.users.destroy_modal.text', name: user.full_name)
+        } do %>
+       <span class="icon"><i class="mdi mdi-trash-can"></i></span>
+    <% end %>
+  </div>
+</td>

@@ -1,3 +1,4 @@
+
 <aside class="aside is-placed-left is-expanded">
   <div class="aside-tools">
     <div>
@@ -36,11 +37,11 @@
           <span class="menu-item-label">Forms</span>
         </a>
       </li>
-      <li class="--set-active-profile-html">
-        <a href="profile.html">
+      <li class="--set-active-profile-html <%= active_if('users', 'profile') %>">
+        <%= link_to profile_path, title: t('nav.lists.profile') do %>
           <span class="icon"><i class="mdi mdi-account-circle"></i></span>
-          <span class="menu-item-label">Profile</span>
-        </a>
+          <span class="menu-item-label"><%= t('nav.lists.profile') %></span>
+        <% end %>
       </li>
       <li>
         <a href="login.html">

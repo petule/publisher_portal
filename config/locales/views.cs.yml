@@ -13,7 +13,6 @@ cs:
       publishers: Nakladatelé
       users: Uživatelé
       settings: Nastavení
-
   nav:
     dashboard:
       title: Dashboard
@@ -22,7 +21,30 @@ cs:
     lists:
       title: Přehledy
       authors: Autoři
+      profile: Můj profil
   views:
+    user_not_authorized: "Nemáte oprávnění provést tuto akci."
+    required_input: "* Toto pole je povinné"
+    users:
+      password:
+        title: Úprava hesla
+      profile_title: Můj profil
+      title: Uživatelé
+      edit_title: Moje údaje
+      edit_button: Úprava uživatele
+      update_success: Uživatel byl upraven
+      update_password_success: Heslo bylo upraveno
+      new:
+        title: Nový uživatel
+        submit: Vytvořit uživatele
+        user_name: Uživatelské údaje
+      edit:
+        title: Úprava uživatel
+        submit: Upravit uživatele
+      errors:
+        publisher: Uživatel
+        password: Heslo
+        current_password: Aktuální heslo
     admin:
       title: Správce
       back: Zpět do administrace
@@ -48,6 +70,30 @@ cs:
         errors:
           publisher: Nakladatel
           user: Uživatelské údaje
+      users:
+        destroy_modal:
+          title: Potvrzení
+          text: Opravdu chcete smazat uživatele %{name}?
+          cancel: Zrušit
+        title: Uživatelé
+        new_button: Nový uživatel
+        edit_button: Úprava uživatele
+        not_found: Uživatel nenalezen
+        no_users: Žádní uživatelé
+        create_success: Uživatel byl vytvořen
+        destroy_success: Uživatel byl smazán
+        update_success: Uživatel byl upraven
+        new:
+          title: Nový uživatel
+          submit: Vytvořit uživatele
+          user_name: Uživatelské údaje
+        edit:
+          title: Úprava uživatele
+          submit: Upravit uživatele
+        errors:
+          publisher: Uživatel
+    profile:
+      submit: upravit
     authors:
       title: Autoři
       not_found: Autor nenalezen
@@ -59,3 +105,16 @@ cs:
       previous: "&lsaquo; Předchozí"
       next: "Další &rsaquo;"
       truncate: "&hellip;"
+  dials:
+    role:
+      user: uživatel
+      data_master: data master
+      owner: majitel
+      publisher_admin: administrátor
+      admin: administrátor portálu
+  modals:
+    destroy:
+      title: Potvrzení
+      text: Opravdu chcete smazat uživatele %{name}?
+      cancel: Zrušit
+      confirm: Smazat

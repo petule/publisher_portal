@@ -12,7 +12,16 @@ Rails.application.routes.draw do
     resources :users
     root to: 'dashboard#index'
   end
+
+  get '/profil', to: 'users#profile', as: :profile
   devise_for :users
+  resources :users, only: %i(update) do
+    patch :update_password, on: :member
+  end
+
+  resources :publishers do
+
+  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

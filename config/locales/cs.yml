@@ -13,8 +13,12 @@ cs:
         email: "E-mail"
         password: "Heslo"
         password_confirmation: "Heslo znovu"
+        current_password: Aktuální heslo
         first_name: Jméno
         last_name: Příjmení
+        role: Role
+        publisher_id: Nakladatel
+        publisher: Nakladatel
         remember_me: "Trvalé přihlášení"
       author:
         full_name: Jméno
