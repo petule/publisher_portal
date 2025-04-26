@@ -6,7 +6,7 @@ class User < ApplicationRecord
   belongs_to :publisher, optional: true
   enum :role, { user: 0, data_master: 1, owner: 2, publisher_admin: 3, admin: 4 }, default: :user, suffix: true
   validates :first_name, :last_name, presence: true
-  validates :email, uniqueness: true, presence: true
+  validates :email, uniqueness: true, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :publisher_id, presence: true, unless: :admin_role?
   has_one_attached :avatar
 
