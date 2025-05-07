@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :series
+  resources :ebooks
   require 'sidekiq/web'
 
   authenticate :user, ->(user) { user.admin_role? } do

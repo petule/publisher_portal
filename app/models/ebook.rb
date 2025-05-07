@@ -4,6 +4,8 @@ class Ebook < ApplicationRecord
   belongs_to :publisher
   has_many :ebook_authors
   has_many :authors, through: :ebook_authors
+  validates :isbn, uniqueness: true
+  validates :isbn_epub, uniqueness: true, if: -> { file_mobi.present? }
 
   has_one_attached :main_image
   has_many_attached :images

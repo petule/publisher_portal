@@ -1,0 +1,25 @@
+<% if @series.any? %>
+  <%= paginate @series %>
+  <table>
+    <thead>
+    <tr>
+      <th><%= series_sort_link('title', t('activerecord.attributes.series.title')) %></th>
+      <th><%= series_sort_link('subtitle', t('activerecord.attributes.series.subtitle')) %></th>
+      <th><%= series_sort_link('isbn', t('activerecord.attributes.series.isbn')) %></th>
+      <th><%= series_sort_link('active', t('activerecord.attributes.series.active')) %></th>
+      <th><%= series_sort_link('imported', t('activerecord.attributes.series.imported')) %></th>
+      <th><%= series_sort_link('checked', t('activerecord.attributes.series.checked')) %></th>
+      <th><%= t('activerecord.attributes.series.ebook_count') %></th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody id="series-list">
+    <% @series.each do |series| %>
+      <%= render partial: 'series/series', locals: { series: series } %>
+    <% end %>
+    </tbody>
+  </table>
+  <%= paginate @series %>
+<% else %>
+  <p class="padding-10"><%= t('views.series.not_found') %></p>
+<% end %>

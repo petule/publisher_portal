@@ -49,7 +49,7 @@ class Admin::UsersController < ApplicationController
 
     respond_to do |format|
       format.turbo_stream
-      format.html { redirect_to admin_users_path, notice: "Uživatel byl smazán." }
+      format.html { redirect_to admin_users_path, notice: t('views.admin.users.destroy_success') }
     end
   end
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_04_18_190127) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_26_092431) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "unaccent"
@@ -172,6 +172,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_18_190127) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "confirmed", default: false
+    t.boolean "imported", default: false
+    t.datetime "last_import_at", precision: nil
+    t.boolean "checked", default: false
     t.index ["language_id"], name: "index_ebooks_on_language_id"
     t.index ["publisher_id"], name: "index_ebooks_on_publisher_id"
     t.index ["series_id"], name: "index_ebooks_on_series_id"
@@ -217,12 +220,13 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_18_190127) do
     t.text "short_content"
     t.text "content"
     t.string "video"
-    t.string "isbn_epub"
-    t.string "isbn_mobi"
-    t.string "isbn_pdf"
     t.boolean "active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "imported", default: false
+    t.datetime "last_import_at", precision: nil
+    t.boolean "checked", default: false
+    t.string "isbn"
   end
 
   create_table "users", force: :cascade do |t|

@@ -1,0 +1,16 @@
+<% if @errors.present? %>
+  <%= turbo_stream.update 'series_errors', partial: 'series/errors', locals: { errors: @errors } %>
+<% else %>
+  <%= turbo_stream.update "series_notice", partial: 'shared/notice', locals: { notice: t('views.series.create_success') } %>
+  <%= turbo_stream.prepend "series_notice" do %>
+    <div data-controller="auto-fade-out" ></div>
+  <% end %>
+  <% if Series.all.count == 1 %>
+    <%= turbo_stream.update 'results', partial: 'series/series_list' %>
+  <% else %>
+    <%= turbo_stream.prepend "series-list" do %>
+      <%= render @series, highlight: true %>
+    <% end %>
+  <% end %>
+
+<% end %>
