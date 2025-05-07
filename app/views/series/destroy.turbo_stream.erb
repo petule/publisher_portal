@@ -1,0 +1,5 @@
+
+<%= turbo_stream.remove dom_id(@series) %>
+<%= turbo_stream.update "series_notice", partial: 'shared/notice',
+   locals: { notice: t('views.series.destroy_success') } %>
+

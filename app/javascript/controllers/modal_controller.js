@@ -15,7 +15,6 @@ export default class extends Controller {
         if (modal) {
             modal.classList.add("active")
             document.documentElement.classList.add('clipped');
-            //alert('jo')
             const confirmButton = modal.querySelector("[data-modal-target='confirmButton']")
             if (confirmButton && destroyUrl) {
                 confirmButton.setAttribute("href", destroyUrl)
@@ -27,6 +26,13 @@ export default class extends Controller {
                 question.textContent = questionText
             }
         }
+    }
+
+    confirm(event) {
+        const modal = event.target.closest('.modal')
+        const confirmButton = modal.querySelector("[data-modal-target='confirmButton']")
+        confirmButton.click()
+        this.close(event)
     }
 
     close(event) {

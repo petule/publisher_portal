@@ -35,6 +35,57 @@ cs:
         content: Popis
         email: Email
         active: Aktivní
+      series:
+        title: Název série
+        subtitle: Podtitul série
+        short_content: Krátký popis
+        content: Popis
+        video: Video
+        isbn: ISBN
+        isbn_epub: ISBN epub
+        isbn_mobi: ISBN mobi
+        isbn_pdf: ISBN pdf
+        address: Adresa
+        email: Email
+        active: Aktivní
+        imported: Importováno do databook.cz
+        last_import_at: Poslední import
+        checked: Zkontrolováno
+        ebook_count: Počet eknih v sérii
+      ebook:
+        title: Název
+        original_title: Originální název
+        subtitle: Krátký popis
+        short_content: Krátký popis
+        content: Popis
+        anotation: Anotace
+        video: Video
+        isbn: ISBN
+        isbn_epub: ISBN epub
+        isbn_mobi: ISBN mobi
+        isbn_pdf: ISBN pdf
+        series_id: Série
+        percentage_preview: Procent k ukázce
+        language_id: Jazyk
+        activate_at: Aktivováno
+        change_at: Změněno
+        active: Aktivní
+        internal_number: Interní číslo
+        publisher_id: Vydavatel
+        part: Část
+        publication_year: Rok vydání
+        page_count: Počet stran
+        publication_place: Vydáno v
+        licence_end_at: Licebnce končí
+        sale_start_at: Sleva začíná
+        sale_end_at: Sleva končí
+        url: url
+        sponsored: Sponzorováno
+        confirmed: Potvrzeno
+        imported: Importováno do databook.cz
+        last_import_at: Poslední import
+        checked: Zkontrolováno
+
     errors:
       messages:
         record_invalid: 'Validace je neúspešná: %{errors}'

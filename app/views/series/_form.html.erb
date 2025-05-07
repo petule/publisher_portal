@@ -1,0 +1,82 @@
+<%= turbo_frame_tag 'series_notice' %>
+<section class="section main-section" data-controller="fade-out" data-fade-out-target="frame" data-auto-fade-out-target="frame">
+  <div class="card mb-6">
+    <header class="card-header">
+      <p class="card-header-title">
+        <span class="icon"><i class="mdi mdi-ballot"></i></span>
+        <%= @series.persisted? ? t('views.series.edit.title') : t('views.series.new.title') %>
+      </p>
+    </header>
+    <div class="card-content">
+      <%= turbo_frame_tag 'series_errors' do %>
+        <%= render partial: 'series/errors', locals: { errors: @errors } if @errors.present? %>
+      <% end %>
+      <%= form_with model: @series, url: @series.persisted? ? series_path(@series) : series_index_path,
+                    data: { turbo: @turbo_request } do |f| %>
+        <div class="field">
+          <%= f.label :title, class: "label required" %>
+          <div class="control">
+            <%= f.text_field :title, class: "input", placeholder: t('activerecord.attributes.series.title'), required: true %>
+          </div>
+        </div>
+        <div class="field">
+          <%= f.label :isbn, class: "label required" %>
+          <div class="control">
+            <%= f.text_field :isbn, class: "input", placeholder: t('activerecord.attributes.series.isbn'), required: true %>
+          </div>
+        </div>
+        <div class="field">
+          <%= f.label :active, class: "label" %>
+          <div class="control">
+            <%= f.check_box :active, class: "checkbox" %>
+          </div>
+        </div>
+        <div class="field">
+          <%= f.label :subtitle, class: "label required" %>
+          <div class="control">
+            <%= f.text_field :subtitle, class: "input", placeholder: t('activerecord.attributes.series.subtitle'), required: true  %>
+          </div>
+        </div>
+
+        <div class="field">
+          <%= f.label :video, class: "label" %>
+          <div class="control">
+            <%= f.text_field :video, class: "input", placeholder: t('activerecord.attributes.series.subtitle')  %>
+          </div>
+        </div>
+
+        <div class="field">
+          <%= f.label :short_content, class: "label required" %>
+          <div class="control">
+            <%= f.rich_text_area :short_content, class: "textarea", required: true ,
+              placeholder: t('activerecord.attributes.series.short_content'), data: { controller: 'trix' } %>
+          </div>
+        </div>
+
+        <div class="field">
+          <%= f.label :content, class: "label required" %>
+          <div class="control">
+            <%= f.rich_text_area :content, class: "textarea", required: true ,
+              placeholder: t('activerecord.attributes.series.content'), data: { controller: 'trix' } %>
+          </div>
+        </div>
+
+        <hr>
+
+        <div class="field grouped">
+          <div class="control">
+            <%= f.submit @series.persisted? ? t('views.series.edit.submit') : t('views.series.new.submit'), class: "button green" %>
+          </div>
+          <div class="control">
+            <% if @turbo_request %>
+              <%= button_tag t('helpers.submit.cancel'), type: "reset", class: "button",
+                             data: { action: "fade-out#remove" } %>
+            <% else %>
+              <%= link_to t('helpers.submit.cancel'), series_index_path, class: "button", data: { turbo_frame: "_top" } %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>

@@ -11,8 +11,11 @@
       <button class="button" data-action="click->modal#close">
         <%= t('modal.destroy.cancel') %>
       </button>
+      <button class="button red" data-action="click->modal#confirm">
+        <%= t('modals.destroy.confirm') %>
+      </button>
       <%= link_to t('modals.destroy.confirm'), '#', method: :delete, class: 'button red',
-        data: { turbo_method: :delete, modal_target: 'confirmButton' } %>
+                  data: { turbo_method: :delete, modal_target: 'confirmButton' } %>
     </footer>
   </div>
 </div>

@@ -22,6 +22,14 @@ cs:
       title: Přehledy
       authors: Autoři
       profile: Můj profil
+      ebooks:
+        title: Eknihy
+        new: Nová ekniha
+        index: Moje eknihy
+      series:
+        title: Knižní série
+        new: Nová série
+        index: Moje knižní série
   views:
     user_not_authorized: "Nemáte oprávnění provést tuto akci."
     required_input: "* Toto pole je povinné"
@@ -105,6 +113,48 @@ cs:
       previous: "&lsaquo; Předchozí"
       next: "Další &rsaquo;"
       truncate: "&hellip;"
+    series:
+      title: Knižní série
+      new_button: Nová knižní série
+      edit_button: Úprava knižní série
+      not_found: Knižní série nenalezena
+      series_empty: Žádné knižní série
+      create_success: Knižní série byla vytvořena
+      update_success: Knižní série byla upravena
+      destroy_success: Knižní série byla smazána
+      new:
+        title: Nová knižní série
+        submit: Vytvořit knižní sérii
+      edit:
+        title: Úprava knižní série
+        submit: Upravit knižní sérii
+      errors:
+        series: Knižní série
+      destroy_modal:
+        title: Potvrzení
+        text: Opravdu chcete smazat knižní sérii %{name}?
+        cancel: Zrušit
+    ebooks:
+      title: Eknihy
+      new_button: Nová ekniha
+      edit_button: Úprava eknihy
+      not_found: Ekniha nenalezena
+      series_empty: Žádné eknihy
+      create_success: Ekniha byla vytvořena
+      update_success: Ekniha byla upravena
+      destroy_success: Ekniha byla smazána
+      new:
+        title: Nová ekniha
+        submit: Vytvořit eknihu
+      edit:
+        title: Úprava eknihy
+        submit: Upravit eknihu
+      errors:
+        ebooks: Eknihy
+      destroy_modal:
+        title: Potvrzení
+        text: Opravdu chcete smazat eknihu %{name}?
+        cancel: Zrušit
   dials:
     role:
       user: uživatel
