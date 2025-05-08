@@ -1,0 +1,3 @@
+<tr id="author_<%= author.id %>" class="<%= 'highlight' if local_assigns[:highlight] %>">
+  <%= render partial: 'authors/author_items', locals: { author: author } %>
+</tr>

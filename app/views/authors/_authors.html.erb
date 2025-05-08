@@ -4,30 +4,15 @@
     <thead>
     <tr>
       <th><%= sort_link('full_name', t('activerecord.attributes.author.full_name')) %></th>
-      <th><%= sort_link('content', t('activerecord.attributes.author.content')) %></th>
+      <th><%= sort_link('author_type', t('activerecord.attributes.author.author_type')) %></th>
+      <th><%= t('activerecord.attributes.author.ebook_count') %></th>
       <th><%= sort_link('active', t('activerecord.attributes.author.active')) %></th>
       <th></th>
     </tr>
     </thead>
-    <tbody>
+    <tbody id="authors-list">
     <% @authors.each do |author| %>
-      <tr>
-        <td data-label="full_name"><%= author.full_name %></td>
-        <td data-label="contect"><%= author.content_trim %></td>
-        <td data-label="active">
-          <%= content_tag(:i, "", class: "mdi #{author.active ? 'mdi-check-circle text-green-500' : 'mdi-close-circle text-red-500'}") %>
-        </td>
-        <td class="actions-cell">
-          <div class="buttons right nowrap">
-            <button class="button small blue --jb-modal"  data-target="sample-modal-2" type="button">
-              <span class="icon"><i class="mdi mdi-eye"></i></span>
-            </button>
-            <button class="button small red --jb-modal" data-target="sample-modal" type="button">
-              <span class="icon"><i class="mdi mdi-trash-can"></i></span>
-            </button>
-          </div>
-        </td>
-      </tr>
+      <%= render partial: 'authors/author', locals: { author: author } %>
     <% end %>
     </tbody>
   </table>

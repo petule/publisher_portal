@@ -1,0 +1,74 @@
+<%= turbo_frame_tag 'authors_notice' %>
+<section class="section main-section" data-controller="fade-out" data-fade-out-target="frame" data-auto-fade-out-target="frame">
+  <div class="card mb-6">
+    <header class="card-header">
+      <p class="card-header-title">
+        <span class="icon"><i class="mdi mdi-ballot"></i></span>
+        <%= @author.persisted? ? t('views.authors.edit.title') : t('views.authors.new.title') %>
+      </p>
+    </header>
+    <div class="card-content">
+      <%= turbo_frame_tag 'authors_errors' do %>
+        <%= render partial: 'authors/errors', locals: { errors: @errors } if @errors.present? %>
+      <% end %>
+      <%= form_with model: @author, url: @author.persisted? ? author_path(@author) : authors_path,
+                    data: { turbo: @turbo_request } do |f| %>
+        <div class="field">
+          <%= f.label :first_name, class: "label required" %>
+          <div class="control">
+            <%= f.text_field :first_name, class: "input", placeholder: t('activerecord.attributes.author.first_name'), required: true %>
+          </div>
+        </div>
+        <div class="field">
+          <%= f.label :last_name, class: "label required" %>
+          <div class="control">
+            <%= f.text_field :last_name, class: "input", placeholder: t('activerecord.attributes.author.last_name'), required: true %>
+          </div>
+        </div>
+        <div class="field">
+          <%= f.label :degree, class: "label" %>
+          <div class="control">
+            <%= f.text_field :degree, class: "input", placeholder: t('activerecord.attributes.author.degree') %>
+          </div>
+        </div>
+        <div class="field">
+          <%= f.label :author_type, class: "label required" %>
+          <div class="control">
+            <%= f.select :author_type, options_for_select(Author.author_types.map { |author_type, key| [t("dials.author_type.#{author_type}"), key] }),
+                         {}, class: "input ",
+                         data: { controller: "slim-select" },
+                         placeholder: t('activerecord.attributes.author.author_type.role') %>
+          </div>
+        </div>
+        <div class="field">
+          <%= f.label :active, class: "label" %>
+          <div class="control">
+            <%= f.check_box :active, class: "checkbox" %>
+          </div>
+        </div>
+        <div class="field">
+          <%= f.label :content, class: "label required" %>
+          <div class="control">
+            <%= f.rich_text_area :content, class: "textarea", required: true ,
+              placeholder: t('activerecord.attributes.series.content'), data: { controller: 'trix' } %>
+          </div>
+        </div>
+        <hr>
+
+        <div class="field grouped">
+          <div class="control">
+            <%= f.submit @author.persisted? ? t('views.authors.edit.submit') : t('views.authors.new.submit'), class: "button green" %>
+          </div>
+          <div class="control">
+            <% if @turbo_request %>
+              <%= button_tag t('helpers.submit.cancel'), type: "reset", class: "button",
+                             data: { action: "fade-out#remove" } %>
+            <% else %>
+              <%= link_to t('helpers.submit.cancel'), authors_path, class: "button", data: { turbo_frame: "_top" } %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>

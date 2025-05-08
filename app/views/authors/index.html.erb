@@ -6,10 +6,15 @@
   </div>
 </section>
 <section class="section main-section">
+  <%= turbo_frame_tag "authors_form", data: { fade_out_target: "frame" } %>
   <div class="card has-table">
     <header class="card-header">
       <p class="card-header-title">
-        <span class="icon"><i class="mdi mdi-account-multiple"></i></span><%= t('views.authors.title') %>
+        <span class="icon"><i class="mdi mdi-account-multiple"></i></span><%= t('views.authors.title') %>&nbsp;&nbsp;
+        <%= link_to new_author_path, class: "button small blue", title: t('views.authors.new_button'),
+                    data: { turbo_frame: "authors_form", turbo_stream: 'update' } do %>
+          <span class="icon"><i class="mdi mdi-plus"></i></span>
+        <% end if policy(Author).new? %>
       </p>
       <%= form_with url: authors_path, method: :get, data: { controller: 'search-form', turbo_frame: 'result',
                                                              turbo_stream: 'update' },
@@ -34,3 +39,4 @@
     </div>
   </div>
 </section>
+<%= render 'modals/destroy_modal' %>

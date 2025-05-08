@@ -107,6 +107,23 @@ cs:
       not_found: Autor nenalezen
       ebooks_empty: Žádné eknihy
       no_authors: Žádní autoři
+      create_success: Autor byl vytvořen
+      update_success: Autor byl upraven
+      destroy_success: Autor byl smazán
+      new_button: Nový autor
+      edit_button: Úprava autora
+      new:
+        title: Nový autor
+        submit: Vytvořit autora
+      edit:
+        title: Úprava autora
+        submit: Upravit autora
+      errors:
+        series: Autor
+      destroy_modal:
+        title: Potvrzení
+        text: Opravdu chcete smazat autora %{name}?
+        cancel: Zrušit
     pagination:
       first: "&laquo; První"
       last: "Poslední &raquo;"
@@ -135,7 +152,10 @@ cs:
         text: Opravdu chcete smazat knižní sérii %{name}?
         cancel: Zrušit
     ebooks:
+      form_header:
+
       title: Eknihy
+      empty_result: Źádné eknihy
       new_button: Nová ekniha
       edit_button: Úprava eknihy
       not_found: Ekniha nenalezena
@@ -162,6 +182,10 @@ cs:
       owner: majitel
       publisher_admin: administrátor
       admin: administrátor portálu
+    author_type:
+      author: Autor
+      illustrator: Ilustrátor
+      translator: Překladatel
   modals:
     destroy:
       title: Potvrzení

@@ -1,5 +1,7 @@
 class SeriesController < ApplicationController
   before_action :set_series, only: %i[ show edit update destroy ]
+  before_action :authorize_series!, only: %i[show edit update destroy]
+  before_action :authorize_series_class!, only: %i[index new create]
 
   def index
     authorize Series
@@ -77,12 +79,19 @@ class SeriesController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to series_index_path, status: :see_other, notice: t('views.series.destroy_success') }
-      format.json { head :no_content }
+      format.turbo_stream
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+    def authorize_series!
+      authorize @series
+    end
+
+    def authorize_series_class!
+      authorize Series
+    end
+
     def set_series
       @series = Series.find(params.expect(:id))
     end

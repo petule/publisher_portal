@@ -1,0 +1,4 @@
+<%= turbo_stream.remove dom_id(@author) %>
+<%= turbo_stream.update "authors_notice", partial: 'shared/notice',
+   locals: { notice: t('views.authors.destroy_success') } %>
+

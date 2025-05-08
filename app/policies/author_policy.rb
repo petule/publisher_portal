@@ -13,4 +13,24 @@ class AuthorPolicy < ApplicationPolicy
   def show?
     true
   end
+
+  def edit?
+    user&.admin_role?
+  end
+
+  def update?
+    edit?
+  end
+
+  def create?
+    edit?
+  end
+
+  def new?
+    edit?
+  end
+
+  def destroy?
+    edit?
+  end
 end

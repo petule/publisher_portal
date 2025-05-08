@@ -1,0 +1,59 @@
+<%= turbo_frame_tag 'ebooks_notice' %>
+<section class="section main-section" data-controller="fade-out" data-fade-out-target="frame" data-auto-fade-out-target="frame">
+  <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 mb-6">
+    <div class="card">
+      <header class="card-header">
+        <p class="card-header-title">
+          <span class="icon"><i class="mdi mdi-account-circle"></i></span>
+          <%= t('views.users.edit_title') %>
+        </p>
+      </header>
+      <div class="card-content">
+        <%= turbo_frame_tag 'profile' do %>
+          <%= render 'form' %>
+        <% end %>
+      </div>
+    </div>
+    <div class="card">
+      <header class="card-header">
+        <p class="card-header-title">
+          <span class="icon"><i class="mdi mdi-lock"></i></span>
+          <%= t('views.users.password.title') %>
+        </p>
+      </header>
+      <div class="card-content">
+        <%= turbo_frame_tag 'password' do %>
+          <%= render 'password_form' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 mb-6">
+    <div class="card">
+      <header class="card-header">
+        <p class="card-header-title">
+          <span class="icon"><i class="mdi mdi-account-circle"></i></span>
+          <%= t('views.users.edit_title') %>
+        </p>
+      </header>
+      <div class="card-content">
+        <%= turbo_frame_tag 'profile' do %>
+          <%= render 'form' %>
+        <% end %>
+      </div>
+    </div>
+    <div class="card">
+      <header class="card-header">
+        <p class="card-header-title">
+          <span class="icon"><i class="mdi mdi-lock"></i></span>
+          <%= t('views.users.password.title') %>
+        </p>
+      </header>
+      <div class="card-content">
+        <%= turbo_frame_tag 'password' do %>
+          <%= render 'password_form' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>

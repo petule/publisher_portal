@@ -22,12 +22,14 @@ cs:
         remember_me: "Trvalé přihlášení"
       author:
         full_name: Jméno
+        author_type: Typ
         first_name: Jméno
         last_name: Příjmení
         degree: Titul
         content: Popis
         product_content: Popis produktů
         active: Aktivní
+        ebook_count: Počet eknih
       publisher:
         title: Jméno
         address: Adresa
@@ -53,7 +55,9 @@ cs:
         checked: Zkontrolováno
         ebook_count: Počet eknih v sérii
       ebook:
+        id: ID
         title: Název
+        authors: Autoři
         original_title: Originální název
         subtitle: Krátký popis
         short_content: Krátký popis
@@ -65,7 +69,7 @@ cs:
         isbn_mobi: ISBN mobi
         isbn_pdf: ISBN pdf
         series_id: Série
-        percentage_preview: Procent k ukázce
+        percentage_preview: Procenta pro náhled
         language_id: Jazyk
         activate_at: Aktivováno
         change_at: Změněno
@@ -76,7 +80,7 @@ cs:
         publication_year: Rok vydání
         page_count: Počet stran
         publication_place: Vydáno v
-        licence_end_at: Licebnce končí
+        licence_end_at: Licence končí
         sale_start_at: Sleva začíná
         sale_end_at: Sleva končí
         url: url
@@ -85,7 +89,9 @@ cs:
         imported: Importováno do databook.cz
         last_import_at: Poslední import
         checked: Zkontrolováno
-
+        state: Stav
+        price: Cena s DPH
+        updated_at: Datum aktualizace
     errors:
       messages:
         record_invalid: 'Validace je neúspešná: %{errors}'
