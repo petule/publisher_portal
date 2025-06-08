@@ -12,6 +12,7 @@ cs:
       title: Přehledy
       publishers: Nakladatelé
       users: Uživatelé
+      categories: Kategorie
       settings: Nastavení
   nav:
     dashboard:
@@ -78,6 +79,28 @@ cs:
         errors:
           publisher: Nakladatel
           user: Uživatelské údaje
+      categories:
+        move_error: 'Chyba při přesouvání kategorie'
+        destroy_modal:
+          title: Potvrzení
+          text: Opravdu chcete smazat kategorii %{name}?
+          cancel: Zrušit
+        title: Kategorie e-knih
+        new_button: Nová kategorie
+        edit_button: Úprava kategorie
+        not_found: Kategorie nenalezen
+        no_users: Žádní kategorie
+        create_success: Kategorie byla vytvořen
+        destroy_success: Kategorie byla smazán
+        update_success: Kategorie byla upraven
+        new:
+          title: Nová kategorii
+          submit: Vytvořit kategorii
+        edit:
+          title: Úprava kategorie
+          submit: Upravit kategorii
+        errors:
+          category: Kategorie
       users:
         destroy_modal:
           title: Potvrzení
@@ -153,7 +176,25 @@ cs:
         cancel: Zrušit
     ebooks:
       form_header:
-
+        title: Popis
+        licences: Licence
+        authors: Autoři a ostatní
+        series: Série
+        series_categories: Série a kategorie
+        categories: Kategorie
+        annotation: Anotace
+        others: Další informace o knize
+        isbn: Identifikátory
+        prices: Ceny
+        files: Soubory eknih
+        percentage_preview: Procenta pro náhled
+      parts:
+        title:
+      upload:
+        pdf: nahrát PDF
+        mobi: nahrát Mobi
+        epub: nahrát Epub
+        image: nahrát obálku
       title: Eknihy
       empty_result: Źádné eknihy
       new_button: Nová ekniha
@@ -171,11 +212,18 @@ cs:
         submit: Upravit eknihu
       errors:
         ebooks: Eknihy
+
       destroy_modal:
         title: Potvrzení
         text: Opravdu chcete smazat eknihu %{name}?
         cancel: Zrušit
   dials:
+    active_true: Aktivní
+    active_false: Neaktivní
+    pluralize_ebooks:
+      one: eKniha
+      more: eKnihy
+      many: eknih
     role:
       user: uživatel
       data_master: data master
@@ -186,6 +234,10 @@ cs:
       author: Autor
       illustrator: Ilustrátor
       translator: Překladatel
+    ebooks_state:
+      iniciated: nová
+      checked: zkontrolováno
+      imported: importováno
   modals:
     destroy:
       title: Potvrzení

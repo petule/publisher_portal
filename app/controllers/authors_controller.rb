@@ -79,7 +79,7 @@ class AuthorsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to authors_path, status: :see_other, notice: t('views.authors.destroy_success') }
-      format.json { head :no_content }
+      format.turbo_stream
     end
   end
 

@@ -1,0 +1,36 @@
+<!-- Název + info + Akční tlačítka -->
+<div class="flex items-center space-x-2 w-full" style="border: 1px solid green">
+  <span class="text-sm text-gray-600"><%= category.name %></span>
+  <span class="text-xs text-gray-500">
+      (<%= pluralize_ebooks(category.ebooks.count) %>)
+    </span>
+  <% if category.active? %>
+    <span class="text-xs text-green-600">🟢 <%= t('dials.active_true') %></span>
+  <% else %>
+    <span class="text-xs text-red-600">🔴 <%= t('dials.active_false') %></span>
+  <% end %>
+</div>
+
+<!-- Akční tlačítka -->
+<div class="flex items-center space-x-2">
+  <%= link_to edit_admin_category_path(category),
+              class: "button small green",
+              title: t('views.admin.categories.edit_button'),
+              data: { turbo_frame: dom_id(category), turbo_stream: 'update' } do %>
+    <span class="icon"><i class="mdi mdi-pencil"></i></span>
+  <% end %>
+
+  <% unless category.ebooks.any? %>
+    <%= button_tag type: 'button',
+                   class: 'button small red',
+                   data: {
+                     controller: "modal",
+                     action: "click->modal#open",
+                     target: "modal-destroy",
+                     destroy_url: admin_category_path(category),
+                     question_text: t('views.admin.categories.destroy_modal.text', name: category.name)
+                   } do %>
+      <span class="icon"><i class="mdi mdi-trash-can"></i></span>
+    <% end %>
+  <% end %>
+</div>

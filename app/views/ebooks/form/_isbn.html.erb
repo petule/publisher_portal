@@ -1,0 +1,35 @@
+<div class="card">
+  <header class="card-header">
+    <p class="card-header-title">
+      <span class="icon"><i class="mdi mdi-book-open-variant-outline"></i></span>
+      <%= t('views.ebooks.form_header.isbn') %>
+    </p>
+  </header>
+  <div class="card-content">
+    <div class="field">
+      <%= f.label :isbn, class: "label" %>
+      <div class="control">
+        <%= f.text_field :isbn, class: "input" %>
+      </div>
+    </div>
+    <div class="field">
+      <%= f.label :isbn_epub, class: "label" %>
+      <div class="control">
+        <%= f.text_field :isbn_epub, class: "input" %>
+      </div>
+    </div>
+
+    <div class="field">
+      <%= f.label :isbn_mobi, class: "label" %>
+      <div class="control">
+        <%= f.text_field :isbn_mobi, class: "input" %>
+      </div>
+    </div>
+    <div class="field">
+      <%= f.label :isbn_pdf, class: "label" %>
+      <div class="control">
+        <%= f.text_field :isbn_pdf, class: "input" %>
+      </div>
+    </div>
+  </div>
+</div>

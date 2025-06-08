@@ -1,0 +1,30 @@
+<div class="card">
+  <header class="card-header">
+    <p class="card-header-title">
+      <span class="icon"><i class="mdi mdi-book-open-variant-outline"></i></span>
+      <%= t('views.ebooks.form_header.title') %>
+    </p>
+  </header>
+  <div class="card-content">
+    <div class="field">
+      <%= f.label :title, class: "label required" %>
+      <div class="control">
+        <%= f.text_field :title, class: "input", required: true %>
+      </div>
+    </div>
+
+    <div class="field">
+      <%= f.label :subtitle, class: "label required" %>
+      <div class="control">
+        <%= f.text_field :subtitle, class: "input", required: true %>
+      </div>
+    </div>
+    <div class="field">
+      <%= f.label :original_title, class: "label" %>
+      <div class="control">
+        <%= f.text_field :original_title, class: "input" %>
+      </div>
+    </div>
+
+  </div>
+</div>

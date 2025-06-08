@@ -1,0 +1,29 @@
+.category-item {
+    padding: 1rem;
+    border: 1px solid #ddd;
+    margin: 0.5rem;
+    background-color: white;
+    cursor: move;
+}
+
+.category-item:hover {
+    background-color: #f0f0f0;
+}
+
+.nested-categories {
+    padding-left: 2rem;
+}
+
+.sortable-ghost {
+    @apply opacity-50 bg-gray-100;
+}
+.sortable-chosen {
+    @apply bg-blue-100;
+}
+.sortable-drag {
+    @apply cursor-grabbing;
+}
+
+.drag-handle {
+    user-select: none;
+}

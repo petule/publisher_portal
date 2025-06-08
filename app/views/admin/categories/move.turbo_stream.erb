@@ -1,0 +1,3 @@
+<% if @errors.present? %>
+  <%= turbo_stream.update "category_message", partial: 'admin/categories/errors', locals: { errors: @errors } %>
+<% end %>

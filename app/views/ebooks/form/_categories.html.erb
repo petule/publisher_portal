@@ -1,0 +1,19 @@
+<div class="card">
+  <header class="card-header">
+    <p class="card-header-title">
+      <span class="icon"><i class="mdi mdi-book-open-variant-outline"></i></span>
+      <%= t('views.ebooks.form_header.categories') %>
+    </p>
+  </header>
+  <div class="card-content">
+    <div class="field">
+      <%= f.label :category_ids, class: "label" %>
+      <div class="control">
+        <%= f.select :category_ids, options_for_select(CategoryDecorator.select_options, @ebook.author_ids), {},
+                     class: "input", multiple: true, data: { controller: "slim-select",
+                       "slim-select-placeholder": t('activerecord.attributes.ebook.categories') },
+                     placeholder: t('activerecord.attributes.ebook.categories') %>
+      </div>
+    </div>
+  </div>
+</div>

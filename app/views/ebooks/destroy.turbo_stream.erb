@@ -1,0 +1,4 @@
+<%= turbo_stream.remove dom_id(@ebook) %>
+<%= turbo_stream.update "ebooks_notice", partial: 'shared/notice',
+   locals: { notice: t('views.ebooks.destroy_success') } %>
+

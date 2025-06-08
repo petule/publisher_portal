@@ -12,6 +12,9 @@ Rails.application.routes.draw do
     #get "dashboard", to: "dashboard#index"
     resources :publishers
     resources :users
+    resources :categories do
+      post :move, on: :member
+    end
     root to: 'dashboard#index'
   end
 
@@ -21,9 +24,7 @@ Rails.application.routes.draw do
     patch :update_password, on: :member
   end
 
-  resources :publishers do
-
-  end
+  resources :publishers
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

@@ -1,0 +1,32 @@
+<div class="card">
+  <header class="card-header">
+    <p class="card-header-title">
+      <span class="icon"><i class="mdi mdi-book-open-variant-outline"></i></span>
+      <%= t('views.ebooks.form_header.licences') %>
+    </p>
+  </header>
+  <div class="card-content">
+    <div class="field">
+      <%= f.label :licence_end_at, class: "label required" %>
+      <div class="control">
+        <%= f.date_field :licence_end_at, class: "input", required: true %>
+      </div>
+    </div>
+
+    <div class="field">
+      <%= f.label :activate_at, class: "label required" %>
+      <div class="control">
+        <%= f.date_field :activate_at, class: "input", required: true %>
+      </div>
+    </div>
+
+    <div class="field">
+      <%= f.label :publisher_id, class: "label required" %>
+      <div class="control">
+        <%= f.select :publisher_id, options_for_select(PublisherDecorator.select_options, @ebook.publisher_id), {},
+                     class: "input", data: { controller: "slim-select" },
+                     placeholder: t('activerecord.attributes.ebook.series_id') %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+<td data-label="id"><%= ebook.id %></td>
+<td data-label="title"><%= ebook.title %></td>
+<td data-label="authors"><%= ebook.authors_list %></td>
+<td data-label="state"><%= t("dials.ebooks_state.#{ebook.state}") %></td>
+<td data-label="licence_end"><%= ebook.licence_end %></td>
+<td data-label="price"><%#= ebook.actual_price %></td>
+<td data-label="updated_at"><%= ebook.updated %></td>
+<td class="actions-cell">
+  <div class="buttons right nowrap">
+    <button class="button small blue --jb-modal"  data-target="sample-modal-2" type="button">
+      <span class="icon"><i class="mdi mdi-eye"></i></span>
+    </button>
+    <%= link_to edit_ebook_path(ebook), class: "button small green", title: t('views.ebook.edit_button'),
+                data: { turbo_frame: "ebooks_form", turbo_stream: 'update' } do %>
+      <span class="icon"><i class="mdi mdi-pencil"></i></span>
+    <% end if policy(Ebook).edit? %>
+    <%= button_tag type: 'button', class: 'button small red',
+                   data: { controller: "modal", action: "click->modal#open",
+                           target: "modal-destroy", destroy_url: ebook_path(ebook),
+                           question_text: t('views.ebooks.destroy_modal.text', name: ebook.title)
+                   } do %>
+      <span class="icon"><i class="mdi mdi-trash-can"></i></span>
+    <% end if policy(Ebook).destroy? %>
+  </div>
+</td>

@@ -1,0 +1,11 @@
+<% if @errors.present? %>
+  <%= turbo_stream.update 'ebooks_errors', partial: 'ebooks/errors', locals: { errors: @errors } %>
+<% else %>
+  <%= turbo_stream.update "ebooks_notice", partial: 'shared/notice', locals: { notice: t('views.ebooks.update_success') } %>
+  <%= turbo_stream.prepend "ebooks_notice" do %>
+    <div data-controller="auto-fade-out" ></div>
+  <% end %>
+  <%= turbo_stream.update "ebook_#{@ebook.id}" do %>
+    <%= render partial: 'ebooks/ebook_items', locals: { ebook: @ebook.decorate }, highlight: true %>
+  <% end %>
+<% end %>

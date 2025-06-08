@@ -3,7 +3,7 @@
     <p class="card-header-title">
       <span class="icon"><i class="mdi mdi-account-multiple"></i></span><%= t('views.ebooks.title') %>
       &nbsp;&nbsp;
-      <%= link_to new_series_path, class: "button small blue", title: t('views.ebooks.new_button'),
+      <%= link_to new_ebook_path, class: "button small blue", title: t('views.ebooks.new_button'),
                   data: { turbo_frame: "ebooks_form", turbo_stream: 'update' } do %>
         <span class="icon"><i class="mdi mdi-plus"></i></span>
       <% end %>

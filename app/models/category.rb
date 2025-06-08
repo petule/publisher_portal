@@ -14,13 +14,16 @@ class Category < ApplicationRecord
   scope :by_favourite, -> { where(favourite: true) }
   scope :by_ebook, ->(locale) { where(category_type: CategoryType.ebooks(locale)) }
   scope :by_audio_book, ->(locale) { where(category_type: CategoryType.audio_books(locale)) }
-  scope :by_first_category, -> { where(category_id: nil) }
+  scope :by_first_category, -> { where(category_id: nil).order(:position) }
   scope :by_url, ->(url) { where(url: url) }
   validates :url, uniqueness: { scope: [:language_id, :category_type_id] }
 
   after_save :recalculate_parent_categories
+  after_save :recalculate_position
 
   serialize :parent_categories, coder: YAML, type: Array
+
+  acts_as_tree order: :position
 
   def self.by_ebook_url(url, locale)
     by_active.by_ebook(locale).by_url(url).first

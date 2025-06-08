@@ -4,6 +4,7 @@ export default class extends Controller {
     connect() {
         new SlimSelect({
             select: this.element,
+            placeholder: this.element.dataset.slimSelectPlaceholder
         })
     }
 }

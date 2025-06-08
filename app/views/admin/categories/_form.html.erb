@@ -1,0 +1,57 @@
+<%= form_with model: @category, url: admin_category_path(@category), method: :patch,
+              data: { turbo_frame: dom_id(@category) } do |f| %>
+  <div class="space-y-2 text-sm">
+    <div class="grid grid-cols-2 gap-2">
+      <div>
+        <%= f.label :name %>
+        <%= f.text_field :name, class: "input" %>
+      </div>
+
+      <div>
+        <%= f.label :url %>
+        <%= f.text_field :url, class: "input" %>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-2 gap-2">
+      <div>
+        <%= f.label :seo_title, "SEO titulek" %>
+        <%= f.text_field :seo_title, class: "input" %>
+      </div>
+
+      <div>
+        <%= f.label :seo_description, "SEO popis" %>
+        <%= f.text_field :seo_description, class: "input" %>
+      </div>
+    </div>
+
+    <div>
+      <%= f.label :content, "Obsah" %>
+      <%= f.text_area :content, rows: 2, class: "input" %>
+    </div>
+
+    <div class="flex items-center space-x-4">
+      <%= f.label :active, class: "flex items-center space-x-1" do %>
+        <%= f.check_box :active %>
+        <span>Aktivní</span>
+      <% end %>
+
+      <%= f.label :favourite, class: "flex items-center space-x-1" do %>
+        <%= f.check_box :favourite %>
+        <span>Oblíbená</span>
+      <% end %>
+    </div>
+
+    <div>
+      <%= f.label :ebook_ids, "Přiřazené eKnihy" %>
+      <%= f.collection_select :ebook_ids, Ebook.all, :id, :title,
+                              { include_hidden: false, selected: @category.ebook_ids },
+                              { multiple: true, class: "input h-24", size: 5 } %>
+    </div>
+
+    <div class="flex justify-end space-x-2 pt-2">
+      <%= f.submit "Uložit", class: "button small bg-blue-600 text-white" %>
+      <%= link_to "Zrušit", admin_category_path(@category), data: { turbo_frame: dom_id(@category) }, class: "button small" %>
+    </div>
+  </div>
+<% end %>

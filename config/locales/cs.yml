@@ -56,13 +56,17 @@ cs:
         ebook_count: Počet eknih v sérii
       ebook:
         id: ID
+        main_image: Obálka
         title: Název
+        author_ids: Autoři, ilustrátoři, překladatelé
         authors: Autoři
+        categories: Kategorie
+        category_ids: Kategorie
         original_title: Originální název
         subtitle: Krátký popis
         short_content: Krátký popis
         content: Popis
-        anotation: Anotace
+        annotation: Anotace
         video: Video
         isbn: ISBN
         isbn_epub: ISBN epub
@@ -71,7 +75,7 @@ cs:
         series_id: Série
         percentage_preview: Procenta pro náhled
         language_id: Jazyk
-        activate_at: Aktivováno
+        activate_at: Zahájit prodej
         change_at: Změněno
         active: Aktivní
         internal_number: Interní číslo
@@ -92,6 +96,9 @@ cs:
         state: Stav
         price: Cena s DPH
         updated_at: Datum aktualizace
+        file_pdf: PDF soubor
+        file_mobi: Mobi soubor
+        file_epub: Epub soubor
     errors:
       messages:
         record_invalid: 'Validace je neúspešná: %{errors}'

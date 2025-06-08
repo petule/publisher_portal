@@ -1,0 +1,3 @@
+<tr id="ebook_<%= ebook.id %>" class="<%= 'highlight' if local_assigns[:highlight] %>">
+  <%= render partial: 'ebooks/ebook_items', locals: { ebook: ebook } %>
+</tr>

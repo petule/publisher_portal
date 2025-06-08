@@ -4,22 +4,22 @@
     <thead>
     <tr>
       <th><%= ebook_sort_link('id', t('activerecord.attributes.ebook.id')) %></th>
-      <th><%= ebook_sort_link('title', t('activerecord.attributes.ebook.tile')) %>) %></th>
-      <th><%= ebook_sort_link('authors', t('activerecord.attributes.ebook.authors')) %>) %></th>
-      <th><%= ebook_sort_link('state', t('activerecord.attributes.ebook.stav')) %>) %></th>
-      <th><%= ebook_sort_link('licence_end_at', t('activerecord.attributes.ebook.licence_end_at')) %>) %></th>
-      <th><%= ebook_sort_link('price', t('activerecord.attributes.ebook.price')) %>) %></th>
-      <th><%= ebook_sort_link('updated_at', t('activerecord.attributes.ebook.updated_at')) %>) %></th>
+      <th><%= ebook_sort_link('title', t('activerecord.attributes.ebook.title')) %></th>
+      <th><%= ebook_sort_link('authors', t('activerecord.attributes.ebook.authors')) %></th>
+      <th><%= ebook_sort_link('state', t('activerecord.attributes.ebook.state')) %></th>
+      <th><%= ebook_sort_link('licence_end_at', t('activerecord.attributes.ebook.licence_end_at')) %></th>
+      <th><%= ebook_sort_link('price', t('activerecord.attributes.ebook.price')) %></th>
+      <th><%= ebook_sort_link('updated_at', t('activerecord.attributes.ebook.updated_at')) %></th>
       <th></th>
     </tr>
     </thead>
-    <tbody id="users-list">
+    <tbody id="ebooks-list">
     <% @ebooks.each do |ebook| %>
-      <%#= render partial: 'admin/users/user', locals: { user: user } %>
+      <%= render partial: 'ebooks/ebook', locals: { ebook: ebook } %>
     <% end %>
     </tbody>
   </table>
-  <%= paginate @users %>
+  <%= paginate @ebooks %>
 <% else %>
   <p class="padding-10"><%= t('views.ebooks.empty_result') %></p>
 <% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_08_120945) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_21_064203) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "unaccent"
@@ -80,6 +80,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_08_120945) do
     t.bigint "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "position", default: 1
     t.index ["active"], name: "index_categories_on_active"
     t.index ["category_id"], name: "index_categories_on_category_id"
     t.index ["category_type_id"], name: "index_categories_on_category_type_id"
@@ -147,13 +148,13 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_08_120945) do
     t.string "subtitle"
     t.string "short_content"
     t.text "content"
-    t.text "anotation"
+    t.text "annotation"
     t.string "video"
     t.string "isbn"
     t.string "isbn_epub"
     t.string "isbn_mobi"
     t.string "isbn_pdf"
-    t.bigint "series_id", null: false
+    t.bigint "series_id"
     t.integer "percentage_preview"
     t.bigint "language_id", null: false
     t.datetime "activate_at"
