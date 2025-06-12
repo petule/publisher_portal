@@ -47,7 +47,7 @@ class Admin::CategoriesController < ApplicationController
 
   # PATCH /categories/1/move
   def move
-    mover = Categories::Mover.call(params[:id], params[:position], params[:parent_id])
+    mover = Categories::Mover.call(params[:id], params[:position])
     @errors = mover.errors if mover.failure?
   end
 

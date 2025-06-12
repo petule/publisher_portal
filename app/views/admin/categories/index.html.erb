@@ -6,10 +6,10 @@
   </div>
 </section>
 <section class="section main-section">
-  <%= form_tag '#', id: 'sortable-form', data: { turbo: true, url: move_admin_category_path('id') } do %>
+  <%= form_tag '#', id: 'sortable-form', data: { turbo: true, url: move_admin_category_path('id'),
+                                                 raw_url: move_admin_category_path('id') } do %>
     <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
     <%= hidden_field_tag :position, '', data: { sortable_target: 'position' } %>
-    <%= hidden_field_tag :parent_id, '', data: { sortable_target: 'parentId' } %>
   <% end %>
   <%= turbo_frame_tag 'category_message' %>
 

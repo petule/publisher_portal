@@ -1,6 +1,6 @@
 class Category < ApplicationRecord
   include Active
-
+  default_scope { order(:position) }
   FAVOURITE_COUNT = 12.freeze
 
   belongs_to :language
@@ -18,8 +18,7 @@ class Category < ApplicationRecord
   scope :by_url, ->(url) { where(url: url) }
   validates :url, uniqueness: { scope: [:language_id, :category_type_id] }
 
-  after_save :recalculate_parent_categories
-  after_save :recalculate_position
+  after_save :recalculate_parent_categories, if: :saved_change_to_category_id?
 
   serialize :parent_categories, coder: YAML, type: Array
 
@@ -31,6 +30,10 @@ class Category < ApplicationRecord
 
   def ebook?
     category_type.code.to_s == CategoryType::EBOOKS
+  end
+
+  def siblings
+    Category.where(category_id: category_id).where(language_id: language_id).order(:position)
   end
 
   def audio_book?
@@ -67,4 +70,4 @@ class Category < ApplicationRecord
 
     update_column(:parent_categories, cat)
   end
- end
+end
