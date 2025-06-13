@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     resources :users
     resources :categories do
       post :move, on: :member
+      get :cancel, on: :member
+      get :item, on: :member
     end
     root to: 'dashboard#index'
   end

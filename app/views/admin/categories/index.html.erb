@@ -2,7 +2,7 @@
 <%= render 'layouts/aside/admin_nav' %>
 <section class="is-hero-bar">
   <div class="flex flex-col md:flex-row items-center justify-between space-y-6 md:space-y-0">
-    <h1 class="title"><%= t('views.admin.users.title') %></h1>
+    <h1 class="title"><%= t('views.admin.categories.title') %></h1>
   </div>
 </section>
 <section class="section main-section">
@@ -10,16 +10,16 @@
                                                  raw_url: move_admin_category_path('id') } do %>
     <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
     <%= hidden_field_tag :position, '', data: { sortable_target: 'position' } %>
+    <%= hidden_field_tag :category_id, '', data: { sortable_target: 'category_id' } %>
   <% end %>
+  <%= turbo_frame_tag 'category_detail' %>
   <%= turbo_frame_tag 'category_message' %>
-
   <% @languages.each do |language| %>
     <div class="border border-gray-300 rounded mb-2 shadow-sm" data-controller="toggle">
-      <div class="flex items-center justify-between bg-gray-100 p-3 cursor-pointer hover:bg-gray-200"
-           data-action="click->toggle#toggle">
+      <div class="flex items-center justify-between bg-gray-100 p-3 cursor-pointerx hover:bg-gray-200">
         <div class="flex items-center space-x-2">
           <% if language.categories.by_first_category.any? %>
-            <button class="button small">
+            <button class="button small" data-action="click->toggle#toggle">
               <span class="icon">
                 <i data-toggle-target="icon" class="mdi mdi-minus text-gray-600 text-lg"></i>
               </span>
@@ -28,13 +28,18 @@
             <span class="w-4"></span>
           <% end %>
           &nbsp;&nbsp;<span class="text-sm text-gray-600"><%= language.name %></span>
+            <%= link_to new_admin_category_path(language_id: language.id), class: "button small blue",
+                        title: t('views.admin.categories.new_button'),
+                        data: { turbo_frame: "new_#{language.code}_form", turbo_stream: 'update' } do %>
+              <span class="icon"><i class="mdi mdi-plus"></i></span>
+            <% end %>
         </div>
       </div>
-
+      <%= turbo_frame_tag "new_#{language.code}_form" %>
       <% if language.categories.by_first_category.any? %>
         <div data-toggle-target="content"
              class="pl-4 max-h-[1000px] opacity-100 transition-all duration-300 ease-in-out">
-          <%= render 'category_tree', categories: language.categories.by_first_category %>
+          <%= render 'category_tree', categories: language.categories.by_first_category, category: nil %>
         </div>
       <% end %>
     </div>

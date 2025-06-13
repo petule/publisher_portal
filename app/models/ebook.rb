@@ -29,7 +29,7 @@ class Ebook < ApplicationRecord
     column = allowed_columns.include?(column.to_s) ? column.to_sym : 'id'
     direction = %w[asc desc].include?(direction) ? direction : 'asc'
 
-    order(column => Arel.sql(direction))
+    order(column => Arel.sql(direction)).distinct
   }
   scope :search, ->(query) {
     left_joins(:authors)

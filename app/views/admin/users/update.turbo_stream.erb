@@ -5,6 +5,10 @@
   <%= turbo_stream.prepend "user_notice" do %>
     <div data-controller="auto-fade-out" ></div>
   <% end %>
+  <%= turbo_stream.update dom_id(@user) do %>
+    <%= render partial: 'admin/users/user_items', locals: { user: @user } %>
+  <% end %>
+
   <%= turbo_stream.prepend "users-list" do %>
     <%= render @user, highlight: true %>
   <% end %>

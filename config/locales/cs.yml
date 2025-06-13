@@ -9,6 +9,19 @@ cs:
     models:
       publisher: Nakladatel
     attributes:
+      category:
+        name: "Jméno"
+        title: "Popis"
+        url: "URL"
+        content: Popis
+        parent_categories: Nadřazená kategorie
+        active: Aktivní
+        seo_title: Seo nadpis
+        seo_description: Seo popis
+        favourite: Oblíbené
+        ebook_ids: "Přiřazené eKnihy"
+        category_id: Nadřazená kategorie
+        category_type_id: Typ kategorie
       user:
         email: "E-mail"
         password: "Heslo"

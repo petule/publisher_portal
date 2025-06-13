@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_21_064203) do
+ActiveRecord::Schema[8.0].define(version: 2025_06_12_203340) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "unaccent"
@@ -251,7 +251,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_21_064203) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "categories", "categories"
+  add_foreign_key "categories", "categories", on_delete: :nullify
   add_foreign_key "categories", "category_types"
   add_foreign_key "categories", "languages"
   add_foreign_key "category_types", "languages"

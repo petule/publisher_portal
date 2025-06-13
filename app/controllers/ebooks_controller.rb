@@ -5,7 +5,7 @@ class EbooksController < ApplicationController
   def index
     @ebooks = Ebook.all
     @ebooks = @ebooks.search(params[:query]) if params[:query].present?
-    @ebooks = @ebooks.ordered_by(params[:order], params[:direction]).page(params[:page]).per(per_page).decorate
+    @ebooks = @ebooks.ordered_by(params[:order], params[:direction]).page(params[:page]).per(ebook_per_page).decorate
     respond_to do |format|
       format.html
       format.turbo_stream
@@ -89,9 +89,5 @@ class EbooksController < ApplicationController
       :language_id, :publication_year, :publication_place, :page_count, :isbn, :isbn_epub, :isbn_mobi, :isbn_epub,
       :licence_end_at, :activate_at, :isbn_pdf,
       :publisher_id, :file_pdf, :file_mobi, :file_epub, author_ids: [], category_ids: [])
-  end
-
-  def per_page
-    params[:per_page] || EbookDecorator::PER_PAGES_DEFAULT
   end
 end

@@ -1,57 +1,120 @@
-<%= form_with model: @category, url: admin_category_path(@category), method: :patch,
-              data: { turbo_frame: dom_id(@category) } do |f| %>
-  <div class="space-y-2 text-sm">
-    <div class="grid grid-cols-2 gap-2">
-      <div>
-        <%= f.label :name %>
-        <%= f.text_field :name, class: "input" %>
-      </div>
-
-      <div>
-        <%= f.label :url %>
-        <%= f.text_field :url, class: "input" %>
-      </div>
-    </div>
-
-    <div class="grid grid-cols-2 gap-2">
-      <div>
-        <%= f.label :seo_title, "SEO titulek" %>
-        <%= f.text_field :seo_title, class: "input" %>
-      </div>
-
-      <div>
-        <%= f.label :seo_description, "SEO popis" %>
-        <%= f.text_field :seo_description, class: "input" %>
-      </div>
-    </div>
-
-    <div>
-      <%= f.label :content, "Obsah" %>
-      <%= f.text_area :content, rows: 2, class: "input" %>
-    </div>
-
-    <div class="flex items-center space-x-4">
-      <%= f.label :active, class: "flex items-center space-x-1" do %>
-        <%= f.check_box :active %>
-        <span>Aktivní</span>
+<%= turbo_frame_tag 'category_notice' %>
+<section class="section main-section" data-controller="fade-out" data-fade-out-target="frame" data-auto-fade-out-target="frame">
+  <div class="card mb-6">
+    <header class="card-header">
+      <p class="card-header-title">
+        <span class="icon"><i class="mdi mdi-ballot"></i></span>
+        <%= @category.persisted? ? t('views.admin.categories.edit.title') : t('views.admin.categories.new.title') %>
+      </p>
+    </header>
+    <div class="card-content">
+      <%= turbo_frame_tag 'category_errors' do %>
+        <%= render partial: 'admin/categories/errors', locals: { errors: @errors } if @errors.present? %>
       <% end %>
 
-      <%= f.label :favourite, class: "flex items-center space-x-1" do %>
-        <%= f.check_box :favourite %>
-        <span>Oblíbená</span>
+      <%= form_with model: @category, url: @category.persisted? ? admin_category_path(@category) : admin_categories_path,
+                    method: @category.persisted? ? :patch : :post,
+                    data: { turbo_frame: dom_id(@category), turbo: @turbo_request } do |f| %>
+        <div class="space-y-2 text-sm">
+          <%= f.hidden_field :language_id %>
+          <div class="grid grid-cols-2 gap-2">
+            <div>
+              <%= f.label :name, class: "label required" %>
+              <%= f.text_field :name, class: "input", required: true %>
+            </div>
+
+            <div>
+              <%= f.label :url, class: "label required" %>
+              <%= f.text_field :url, class: "input", required: true %>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-2">
+            <div>
+              <%= f.label :seo_title, class: "label" %>
+              <%= f.text_field :seo_title, class: "input" %>
+            </div>
+
+            <div>
+              <%= f.label :seo_description, class: "label" %>
+              <%= f.text_field :seo_description, class: "input" %>
+            </div>
+          </div>
+
+          <div>
+            <%= f.label :content, class: "label" %>
+            <%= f.rich_text_area :content, class: "textarea", placeholder: t('activerecord.attributes.publisher.content'), data: { controller: 'trix' } %>
+          </div>
+
+          <div class="flex items-center space-x-4">
+            <%= f.label :active, class: "flex items-center space-x-1" do %>
+              <%= f.check_box :active %>
+              <span><%= t('dials.active_true') %></span>
+            <% end %>
+
+            <%= f.label :favourite, class: "flex items-center space-x-1" do %>
+              <%= f.check_box :favourite %>
+              <span><%= t('activerecord.attributes.category.favourite') %></span>
+            <% end %>
+          </div>
+
+          <div>
+            <%= f.label :ebook_ids, class: "label" %>
+            <%= f.collection_select :ebook_ids, Ebook.all, :id, :title,
+                                    { include_hidden: false, selected: @category.ebook_ids },
+                                    { multiple: true, class: "input h-24", size: 5,
+                                      data: { controller: "slim-select", "search-form-target": 'select',
+                                              action: 'search-form#handleChange' } }
+                                    %>
+          </div>
+          <div class="grid grid-cols-2 gap-2">
+            <div>
+              <%= f.label :category_id, class: "label" %>
+              <% if @category.persisted? %>
+                <%= f.collection_select :category_id, @category.language.categories.excluding(@category), :id, :name,
+                                        { include_hidden: true, selected: @category.category_id },
+                                        { multiple: true, class: "input h-24", size: 5,
+                                          data: { controller: "slim-select", "search-form-target": 'select',
+                                                  action: 'search-form#handleChange' } } %>
+              <% else %>
+                <%= f.collection_select :category_id, @category.language.categories, :id, :name,
+                                        { include_hidden: true, selected: @category.category_id },
+                                        { multiple: true, class: "input h-24", size: 5,
+                                          data: { controller: "slim-select", "search-form-target": 'select',
+                                                  action: 'search-form#handleChange' } } %>
+              <% end %>
+            </div>
+
+            <div>
+              <%= f.label :category_type_id, class: "label" %>
+              <%= f.collection_select :category_type_id, CategoryType.by_language(@category.language), :id, :name,
+                                      { include_hidden: false, selected: @category.category_type_id },
+                                      { class: "input h-24", size: 5,
+                                        data: { controller: "slim-select", "search-form-target": 'select',
+                                                action: 'search-form#handleChange' } }
+              %>
+            </div>
+          </div>
+          <div class="flex justify-end space-x-2 pt-2">
+            <div class="field grouped">
+              <div class="control">
+                <%= f.submit @category.persisted? ? t('views.admin.categories.edit.submit') : t('views.admin.categories.new.submit'), class: "button green" %>
+              </div>
+              <div class="control">
+                <% if @turbo_request %>
+                  <%= button_tag t('helpers.submit.cancel'), type: "reset", class: "button", data: { action: "fade-out#remove" } %>
+                  <%= link_to '#', item_admin_category_path(@category), class: 'hidden',
+                              data: { fade_out_target: "link", turbo_frame: dom_id(@category),
+                                      turbo_stream: 'update' } if @category.persisted? %>
+                <% else %>
+                  <%= link_to t('helpers.submit.cancel'), admin_categories_path, class: "button", data: { turbo_frame: "_top" } %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
       <% end %>
-    </div>
-
-    <div>
-      <%= f.label :ebook_ids, "Přiřazené eKnihy" %>
-      <%= f.collection_select :ebook_ids, Ebook.all, :id, :title,
-                              { include_hidden: false, selected: @category.ebook_ids },
-                              { multiple: true, class: "input h-24", size: 5 } %>
-    </div>
-
-    <div class="flex justify-end space-x-2 pt-2">
-      <%= f.submit "Uložit", class: "button small bg-blue-600 text-white" %>
-      <%= link_to "Zrušit", admin_category_path(@category), data: { turbo_frame: dom_id(@category) }, class: "button small" %>
     </div>
   </div>
-<% end %>
+  <div class="cl"></div>
+</section>

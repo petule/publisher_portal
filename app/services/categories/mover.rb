@@ -2,13 +2,16 @@ module Categories
   class Mover
     prepend SimpleCommand
 
-    attr_reader :category, :new_position
-    def initialize(id, new_position)
+    attr_reader :category, :new_position, :parent_id
+    def initialize(id, new_position, parent_id)
       @category = Category.find(id)
       @new_position = new_position.to_i + 1
+      @parent_id = parent_id
     end
 
     def call
+      category.category_id = parent_id
+      category.save
       move_to_position
     rescue ActiveRecord::RecordInvalid => e
       errors.add(:base, e.record.errors.full_messages.join(', '))
@@ -41,7 +44,7 @@ module Categories
     def normalize_positions
       count = category.siblings.count
       expected_sum = (count * (count + 1)) / 2
-      actual_sum   = siblings.sum(:position)
+      actual_sum   = category.siblings.sum(:position)
       return if expected_sum == actual_sum
       expected = 1
       category.siblings.each do |cat|

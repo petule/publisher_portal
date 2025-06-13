@@ -9,6 +9,10 @@ class ApplicationController < ActionController::Base
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
+  def ebook_per_page
+    params[:per_page] || EbookDecorator::PER_PAGES_DEFAULT
+  end
+
   private
 
   def user_not_authorized(exception)

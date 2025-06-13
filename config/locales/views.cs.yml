@@ -32,6 +32,9 @@ cs:
         new: Nová série
         index: Moje knižní série
   views:
+    home:
+      performance: Prodeje
+      dashboard: Nástěnka
     user_not_authorized: "Nemáte oprávnění provést tuto akci."
     required_input: "* Toto pole je povinné"
     users:
@@ -80,6 +83,9 @@ cs:
           publisher: Nakladatel
           user: Uživatelské údaje
       categories:
+        detail_modal:
+          title: Detail kategorie
+          close: Zavřít
         move_error: 'Chyba při přesouvání kategorie'
         destroy_modal:
           title: Potvrzení
@@ -90,9 +96,9 @@ cs:
         edit_button: Úprava kategorie
         not_found: Kategorie nenalezen
         no_users: Žádní kategorie
-        create_success: Kategorie byla vytvořen
-        destroy_success: Kategorie byla smazán
-        update_success: Kategorie byla upraven
+        create_success: Kategorie byla vytvořena
+        destroy_success: Kategorie byla smazána
+        update_success: Kategorie byla upravena
         new:
           title: Nová kategorii
           submit: Vytvořit kategorii
@@ -243,4 +249,5 @@ cs:
       title: Potvrzení
       text: Opravdu chcete smazat uživatele %{name}?
       cancel: Zrušit
+      close: Zavřít
       confirm: Smazat

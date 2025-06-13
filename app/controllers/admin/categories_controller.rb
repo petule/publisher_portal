@@ -1,5 +1,5 @@
 class Admin::CategoriesController < ApplicationController
-  before_action :set_category, only: %i[show edit update destroy move]
+  before_action :set_category, only: %i[show edit update destroy move item]
 
   # GET /categories
   def index
@@ -9,20 +9,34 @@ class Admin::CategoriesController < ApplicationController
 
   # GET /categories/1
   def show
+    @ebooks = @category.ebooks
+    @ebooks = @ebooks.search(params[:query]) if params[:query].present?
+    @ebooks = @ebooks.ordered_by(params[:order], params[:direction]).page(params[:page]).per(ebook_per_page).decorate
   end
 
   # GET /categories/new
   def new
-    @category = Category.new
+    language = Language.find_by_id(params[:language_id])
+    @category = Category.new(language_id: language.id,
+                             category_type: CategoryType.by_language(language).first)
   end
 
   # POST /categories
   def create
-    @category = Category.new(category_params)
-    if @category.save
-      redirect_to admin_categories_path, notice: 'Kategorie byla úspěšně vytvořena.'
+    creator = Categories::Creator.call(category_params)
+    if creator.success?
+      @category = creator.result
+      respond_to do |format|
+        format.html { redirect_to admin_categories_path, notice: t('views.admin.categories.create_success') }
+        format.turbo_stream
+      end
     else
-      render :new
+      @errors = creator.errors
+      @category = creator.result
+      respond_to do |format|
+        format.html { render :new, status: :unprocessable_entity }
+        format.turbo_stream
+      end
     end
   end
 
@@ -30,34 +44,56 @@ class Admin::CategoriesController < ApplicationController
   def edit
   end
 
-  # PATCH/PUT /categories/1
-  def update
-    if @category.update(category_params)
-      redirect_to admin_categories_path, notice: 'Kategorie byla úspěšně aktualizována.'
-    else
-      render :edit
-    end
-  end
-
-  # DELETE /categories/1
-  def destroy
-    @category.destroy
-    redirect_to admin_categories_path, notice: 'Kategorie byla úspěšně odstraněna.'
+  def item
   end
 
   # PATCH /categories/1/move
   def move
-    mover = Categories::Mover.call(params[:id], params[:position])
+    mover = Categories::Mover.call(params[:id], params[:position], params[:category_id])
     @errors = mover.errors if mover.failure?
+  end
+
+  def update
+    updator = Categories::Updator.call(params[:id], category_params)
+    if updator.success?
+      @category = updator.result
+      respond_to do |format|
+        format.html { redirect_to admin_categories_path, notice: t('views.categories.update_success') }
+        format.turbo_stream
+      end
+    else
+      @errors = updator.errors
+      respond_to do |format|
+        @category = Category.find(params[:id])
+        format.html {
+          flash.now[:alert] = @errors.values.flatten.join(", ")
+          render :edit, status: :unprocessable_entity
+        }
+        format.turbo_stream
+      end
+    end
+  end
+
+  def destroy
+    @category = Category.find(params[:id])
+    @category.destroy
+    redirect_to admin_categories_path, notice: t('views.admin.categories.destroy_success')
   end
 
   private
 
-  def set_category
-    @category = Category.find(params[:id])
+  def category_params
+    permitted = params.require(:category).permit(:name, :title, :url, :content, :active, :seo_title, :seo_description,
+      :language_id, :category_type_id, :favourite, category_id: [], ebook_ids: [])
+
+    if permitted[:category_id].is_a?(Array)
+      permitted[:category_id] = permitted[:category_id].reject(&:blank?).first
+    end
+
+    permitted
   end
 
-  def category_params
-    params.require(:category).permit(:name, :title, :url, :content, :parent_category_id, :category_type_id, :favourite, :seo_title, :seo_description, :active)
+  def set_category
+    @category = Category.find(params[:id])
   end
 end

@@ -6,7 +6,7 @@ class Category < ApplicationRecord
   belongs_to :language
   belongs_to :category_type
   belongs_to :parent_category, class_name: 'Category', foreign_key: :category_id, optional: true
-  has_many :categories
+  has_many :categories, class_name: 'Category', foreign_key: :category_id, dependent: :nullify
   has_many :active_categories, -> { by_active }, class_name: 'Category'
   has_many :ebook_categories
   has_many :ebooks, through: :ebook_categories
@@ -21,8 +21,6 @@ class Category < ApplicationRecord
   after_save :recalculate_parent_categories, if: :saved_change_to_category_id?
 
   serialize :parent_categories, coder: YAML, type: Array
-
-  acts_as_tree order: :position
 
   def self.by_ebook_url(url, locale)
     by_active.by_ebook(locale).by_url(url).first

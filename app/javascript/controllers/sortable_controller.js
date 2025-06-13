@@ -21,11 +21,12 @@ export default class extends Controller {
         const item = event.item
         const newPosition = Array.from(event.to.children).indexOf(item)
         const categoryId = item.dataset.id
-
-        console.log(`Moved category ${categoryId} to position ${newPosition}`)
+        const parentId = event.to.dataset.id || null
+        console.log(`Moved category ${categoryId} to position ${newPosition} in parent ${parentId}`)
         const form = document.getElementById('sortable-form')
         form.action = form.dataset.url.replace("id", categoryId)
         document.getElementById('position').value = newPosition
+        document.getElementById('category_id').value = parentId
         form.requestSubmit()
     }
 }

@@ -10,7 +10,7 @@
       <th><%= ebook_sort_link('licence_end_at', t('activerecord.attributes.ebook.licence_end_at')) %></th>
       <th><%= ebook_sort_link('price', t('activerecord.attributes.ebook.price')) %></th>
       <th><%= ebook_sort_link('updated_at', t('activerecord.attributes.ebook.updated_at')) %></th>
-      <th></th>
+      <% if display_actions? %><th></th><% end %>
     </tr>
     </thead>
     <tbody id="ebooks-list">
