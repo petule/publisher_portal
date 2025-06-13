@@ -1,0 +1,6 @@
+<ul data-controller="sortable" data-id="<%= categories.first&.category_id || category&.id %>"
+    id="sortable-<%= categories.first&.category_id || category&.id %>" class="w-full sortable-container">
+  <% categories.each do |category| %>
+    <%= render partial: 'admin/categories/category_item', locals: { category: category } %>
+  <% end if categories.any? %>
+</ul>

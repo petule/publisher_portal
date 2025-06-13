@@ -16,4 +16,7 @@ class SeriesDecorator < Draper::Decorator
   #     end
   #   end
 
+  def self.select_options
+    decorate_collection(Series.by_active).map { |s| [s.title, s.id] }
+  end
 end

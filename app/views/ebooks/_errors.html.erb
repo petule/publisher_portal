@@ -1,0 +1,24 @@
+<% if errors.present? %>
+  <div class="notification red" data-dismiss-target="notification" data-controller="dismiss">
+    <div class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0">
+      <div>
+        <ul>
+          <% errors.keys.each do |attribute| %>
+            <% if errors[attribute].any? %>
+              <li>
+                <strong><%= t("views.ebooks.errors.#{attribute.to_s}") %>:</strong>
+                <% errors[attribute].each do |message| %>
+                  <ul>
+                    <li><%= message %></li>
+                  </ul>
+                <% end %>
+              </li>
+            <% end %>
+          <% end %>
+        </ul>
+      </div>
+      <%= button_tag t('helpers.submit.close'), type: "button", class: "button small textual",
+        data: { action: "dismiss#dismiss" } %>
+    </div>
+  </div>
+<% end %>

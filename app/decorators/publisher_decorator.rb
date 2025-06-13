@@ -23,4 +23,8 @@ class PublisherDecorator < Draper::Decorator
   def address_trim
     truncate(address, length: 20)
   end
+
+  def self.select_options
+    decorate_collection(Publisher.all).map { |p| [p.title, p.id] }
+  end
 end

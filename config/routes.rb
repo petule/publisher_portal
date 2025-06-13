@@ -12,6 +12,11 @@ Rails.application.routes.draw do
     #get "dashboard", to: "dashboard#index"
     resources :publishers
     resources :users
+    resources :categories do
+      post :move, on: :member
+      get :cancel, on: :member
+      get :item, on: :member
+    end
     root to: 'dashboard#index'
   end
 
@@ -21,9 +26,7 @@ Rails.application.routes.draw do
     patch :update_password, on: :member
   end
 
-  resources :publishers do
-
-  end
+  resources :publishers
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -35,7 +38,7 @@ Rails.application.routes.draw do
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   resources :language, only: [:index, :show]
-  resources :authors, only: [:index, :show]
+  resources :authors
   # Defines the root path route ("/")
   root to: 'home#index'
 end

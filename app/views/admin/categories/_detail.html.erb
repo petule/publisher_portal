@@ -1,0 +1,58 @@
+<div id="modal-detail" class="modal" data-controller="detail-modal" data-detail-modal-target="container">
+  <div class="modal-background" data-action="click->modal#close"></div>
+  <div class="modal-card" id="modal-detail-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title"><%= t('views.admin.categories.detail_modal.title') %></p>
+    </header>
+    <section class="modal-card-body">
+      <h2><%= category.name %></h2>
+      <div class="space-y-2 text-sm">
+        <div class="grid grid-cols-2 gap-2">
+          <div>
+            <span class="font-medium"><%= t('activerecord.attributes.category.name') %>:</span> <%= category.name %>
+          </div>
+          <div>
+            <span class="font-medium"><%= t('activerecord.attributes.category.url') %>:</span> <%= category.url %>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-2">
+          <div>
+            <span class="font-medium"><%= t('activerecord.attributes.category.seo_title') %>:</span> <%= category.seo_title %>
+          </div>
+          <div>
+            <span class="font-medium"><%= t('activerecord.attributes.category.seo_description') %>:</span> <%= category.seo_description %>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-2">
+          <div>
+            <span class="font-medium"><%= t('activerecord.attributes.category.active') %>:</span>
+            <% if category.active? %>
+              <span class="text-xs text-green-600 whitespace-nowrap">🟢 <%= t('dials.active_true') %></span>
+            <% else %>
+              <span class="text-xs text-red-600 whitespace-nowrap">🔴 <%= t('dials.active_false') %></span>
+            <% end %>
+          </div>
+          <div>
+            <span class="font-medium"><%= t('activerecord.attributes.category.favourite') %>:</span>
+            <% if category.favourite? %>
+              <span class="text-xs text-green-600 whitespace-nowrap">🟢 <%= t('dials.active_true') %></span>
+            <% else %>
+              <span class="text-xs text-red-600 whitespace-nowrap">🔴 <%= t('dials.active_false') %></span>
+            <% end %>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-2">
+
+        </div>
+      </div>
+      <%= render 'ebooks/index' %>
+      <p><%= category.content&.html_safe %></p>
+
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button" data-action="click->detail-modal#close">
+        <%= t('modals.destroy.close') %>
+      </button>
+    </footer>
+  </div>
+</div>

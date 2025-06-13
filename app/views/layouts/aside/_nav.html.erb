@@ -24,7 +24,7 @@
     </p>
     <ul class="menu-list">
       <% if policy(Ebook).new? %>
-        <li class="--set-active-tables-html <%= active_if('ebooks') %>">
+        <li class="--set-active-tables-html <%= active_if('ebooks', 'new') %>">
           <%= link_to new_ebook_path, title: t('nav.lists.ebooks.new') do %>
             <span class="icon"></span>
             <span class="menu-item-label"><%= t('nav.lists.ebooks.new') %></span>
@@ -32,7 +32,7 @@
         </li>
       <% end %>
       <% if policy(Ebook).index? %>
-        <li class="--set-active-tables-html <%= active_if('ebooks') %>">
+        <li class="--set-active-tables-html <%= active_if('ebooks', 'index') %>">
           <%= link_to ebooks_path, title: t('nav.lists.ebooks.index') do %>
             <span class="icon"></span>
             <span class="menu-item-label"><%= t('nav.lists.ebooks.index') %></span>
@@ -46,7 +46,7 @@
     </p>
     <ul class="menu-list">
       <% if policy(Series).new? %>
-        <li class="--set-active-tables-html <%= active_if('series') %>">
+        <li class="--set-active-tables-html <%= active_if('series', 'new') %>">
           <%= link_to new_series_path, title: t('nav.lists.series.new') do %>
             <span class="icon"></span>
             <span class="menu-item-label"><%= t('nav.lists.series.new') %></span>
@@ -54,7 +54,7 @@
         </li>
       <% end %>
       <% if policy(Series).index? %>
-        <li class="--set-active-tables-html <%= active_if('series') %>">
+        <li class="--set-active-tables-html <%= active_if('series', 'index') %>">
           <%= link_to series_index_path, title: t('nav.lists.series.index') do %>
             <span class="icon"></span>
             <span class="menu-item-label"><%= t('nav.lists.series.index') %></span>

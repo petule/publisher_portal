@@ -1,0 +1,15 @@
+<% if @errors.present? %>
+  <%= turbo_stream.update 'authors_errors', partial: 'authors/errors', locals: { errors: @errors } %>
+<% else %>
+  <%= turbo_stream.update "authors_notice", partial: 'shared/notice', locals: { notice: t('views.authors.create_success') } %>
+  <%= turbo_stream.prepend "authors_notice" do %>
+    <div data-controller="auto-fade-out" ></div>
+  <% end %>
+  <% if Author.all.count == 1 %>
+    <%= turbo_stream.update 'results', partial: 'authors/authors' %>
+  <% else %>
+    <%= turbo_stream.prepend "authors-list" do %>
+      <%= render @author, highlight: true %>
+    <% end %>
+  <% end %>
+<% end %>

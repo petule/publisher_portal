@@ -1,9 +1,3 @@
 <%= turbo_stream.remove dom_id(@user) %>
 <%= turbo_stream.update "user_notice", partial: 'shared/notice',
    locals: { notice: t('views.admin.users.destroy_success') } %>
-<%= turbo_stream.append "js-hook" do %>
-  <script>
-      const modal = document.getElementById('modal-destroy')
-      modal.classList.remove("active")
-  </script>
-<% end %>

@@ -1,0 +1,10 @@
+<span class="text-sm text-gray-600 truncate">&nbsp;<%= category.name %></span>
+<span class="text-xs text-gray-500 whitespace-nowrap">
+  (<%= pluralize_ebooks(category.ebooks.count) %>)
+</span>
+
+<% if category.active? %>
+  <span class="text-xs text-green-600 whitespace-nowrap">🟢 <%= t('dials.active_true') %></span>
+<% else %>
+  <span class="text-xs text-red-600 whitespace-nowrap">🔴 <%= t('dials.active_false') %></span>
+<% end %>

@@ -12,6 +12,7 @@ cs:
       title: Přehledy
       publishers: Nakladatelé
       users: Uživatelé
+      categories: Kategorie
       settings: Nastavení
   nav:
     dashboard:
@@ -31,6 +32,9 @@ cs:
         new: Nová série
         index: Moje knižní série
   views:
+    home:
+      performance: Prodeje
+      dashboard: Nástěnka
     user_not_authorized: "Nemáte oprávnění provést tuto akci."
     required_input: "* Toto pole je povinné"
     users:
@@ -78,6 +82,31 @@ cs:
         errors:
           publisher: Nakladatel
           user: Uživatelské údaje
+      categories:
+        detail_modal:
+          title: Detail kategorie
+          close: Zavřít
+        move_error: 'Chyba při přesouvání kategorie'
+        destroy_modal:
+          title: Potvrzení
+          text: Opravdu chcete smazat kategorii %{name}?
+          cancel: Zrušit
+        title: Kategorie e-knih
+        new_button: Nová kategorie
+        edit_button: Úprava kategorie
+        not_found: Kategorie nenalezen
+        no_users: Žádní kategorie
+        create_success: Kategorie byla vytvořena
+        destroy_success: Kategorie byla smazána
+        update_success: Kategorie byla upravena
+        new:
+          title: Nová kategorii
+          submit: Vytvořit kategorii
+        edit:
+          title: Úprava kategorie
+          submit: Upravit kategorii
+        errors:
+          category: Kategorie
       users:
         destroy_modal:
           title: Potvrzení
@@ -107,6 +136,23 @@ cs:
       not_found: Autor nenalezen
       ebooks_empty: Žádné eknihy
       no_authors: Žádní autoři
+      create_success: Autor byl vytvořen
+      update_success: Autor byl upraven
+      destroy_success: Autor byl smazán
+      new_button: Nový autor
+      edit_button: Úprava autora
+      new:
+        title: Nový autor
+        submit: Vytvořit autora
+      edit:
+        title: Úprava autora
+        submit: Upravit autora
+      errors:
+        series: Autor
+      destroy_modal:
+        title: Potvrzení
+        text: Opravdu chcete smazat autora %{name}?
+        cancel: Zrušit
     pagination:
       first: "&laquo; První"
       last: "Poslední &raquo;"
@@ -135,7 +181,28 @@ cs:
         text: Opravdu chcete smazat knižní sérii %{name}?
         cancel: Zrušit
     ebooks:
+      form_header:
+        title: Popis
+        licences: Licence
+        authors: Autoři a ostatní
+        series: Série
+        series_categories: Série a kategorie
+        categories: Kategorie
+        annotation: Anotace
+        others: Další informace o knize
+        isbn: Identifikátory
+        prices: Ceny
+        files: Soubory eknih
+        percentage_preview: Procenta pro náhled
+      parts:
+        title:
+      upload:
+        pdf: nahrát PDF
+        mobi: nahrát Mobi
+        epub: nahrát Epub
+        image: nahrát obálku
       title: Eknihy
+      empty_result: Źádné eknihy
       new_button: Nová ekniha
       edit_button: Úprava eknihy
       not_found: Ekniha nenalezena
@@ -151,20 +218,36 @@ cs:
         submit: Upravit eknihu
       errors:
         ebooks: Eknihy
+
       destroy_modal:
         title: Potvrzení
         text: Opravdu chcete smazat eknihu %{name}?
         cancel: Zrušit
   dials:
+    active_true: Aktivní
+    active_false: Neaktivní
+    pluralize_ebooks:
+      one: eKniha
+      more: eKnihy
+      many: eknih
     role:
       user: uživatel
       data_master: data master
       owner: majitel
       publisher_admin: administrátor
       admin: administrátor portálu
+    author_type:
+      author: Autor
+      illustrator: Ilustrátor
+      translator: Překladatel
+    ebooks_state:
+      iniciated: nová
+      checked: zkontrolováno
+      imported: importováno
   modals:
     destroy:
       title: Potvrzení
       text: Opravdu chcete smazat uživatele %{name}?
       cancel: Zrušit
+      close: Zavřít
       confirm: Smazat

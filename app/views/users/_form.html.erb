@@ -1,10 +1,13 @@
 <%= form_with model: @user, data: { turbo: true } do |f| %>
   <div class="field">
-    <% if f.object.avatar.attached? %>
-      <div class="image w-48 h-48 mx-auto">
+    <div class="image w-48 h-48 mx-auto">
+      <% if f.object.avatar.attached? %>
         <%= image_tag f.object.avatar_full, class: "rounded-full" %>
-      </div>
-    <% end %>
+      <% else %>
+        <%= image_tag 'no-one.png', class: "rounded-full",
+                      alt: "#{current_user.first_name} #{current_user.last_name}" %>
+      <% end %>
+    </div>
     <%= f.label :avatar, class: "label" %>
     <div class="field-body">
       <div class="field file">

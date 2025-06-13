@@ -1,0 +1,17 @@
+<div class="card">
+  <div class="card-content">
+    <div class="field grouped">
+      <div class="control">
+        <%= f.submit @ebook.persisted? ? t('views.ebooks.edit.submit') : t('views.ebooks.new.submit'), class: "button green" %>
+      </div>
+      <div class="control">
+        <% if @turbo_request %>
+          <%= button_tag t('helpers.submit.cancel'), type: "reset", class: "button",
+                         data: { action: "fade-out#remove" } %>
+        <% else %>
+          <%= link_to t('helpers.submit.cancel'), ebooks_path, class: "button", data: { turbo_frame: "_top" } %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

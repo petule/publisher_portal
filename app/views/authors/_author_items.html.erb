@@ -1,0 +1,24 @@
+<td data-label="full_name"><%= author.full_name %></td>
+<td data-label="author_type"><%= t("dials.author_type.#{author.author_type}") %></td>
+<td data-label="contect"><%= author.ebooks.count %></td>
+<td data-label="active">
+  <%= content_tag(:i, "", class: "mdi #{author.active ? 'mdi-check-circle text-green-500' : 'mdi-close-circle text-red-500'}") %>
+</td>
+<td class="actions-cell">
+  <div class="buttons right nowrap">
+    <button class="button small blue --jb-modal"  data-target="sample-modal-2" type="button">
+      <span class="icon"><i class="mdi mdi-eye"></i></span>
+    </button>
+    <%= link_to edit_author_path(author), class: "button small green", title: t('views.authors.edit_button'),
+                data: { turbo_frame: "authors_form", turbo_stream: 'update' } do %>
+      <span class="icon"><i class="mdi mdi-pencil"></i></span>
+    <% end if policy(Author).edit? %>
+    <%= button_tag type: 'button', class: 'button small red',
+                   data: { controller: "modal", action: "click->modal#open",
+                           target: "modal-destroy", destroy_url: author_path(author),
+                           question_text: t('views.authors.destroy_modal.text', name: author.full_name)
+                   } do %>
+      <span class="icon"><i class="mdi mdi-trash-can"></i></span>
+    <% end if policy(Author).destroy? %>
+  </div>
+</td>

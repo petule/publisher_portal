@@ -1,0 +1,30 @@
+<%= turbo_frame_tag 'ebooks_notice' %>
+<section class="section main-section" data-controller="fade-out" data-fade-out-target="frame" data-auto-fade-out-target="frame">
+  <%= turbo_frame_tag 'ebooks_errors' do %>
+    <%= render partial: 'ebooks/errors', locals: { errors: @errors } if @errors.present? %>
+  <% end %>
+  <%= form_with model: @ebook, data: { turbo: @turbo_request } do |f| %>
+    <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 mb-6">
+      <%= render partial: 'ebooks/form/title', locals: { f: f } %>
+      <%= render partial: 'ebooks/form/licences', locals: { f: f } %>
+    </div>
+    <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 mb-6">
+      <%= render partial: 'ebooks/form/authors', locals: { f: f } %>
+      <%= render partial: 'ebooks/form/series', locals: { f: f } %>
+    </div>
+    <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 mb-6">
+      <%= render partial: 'ebooks/form/categories', locals: { f: f } %>
+      <%= render partial: 'ebooks/form/annotation', locals: { f: f } %>
+    </div>
+
+    <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 mb-6">
+      <%= render partial: 'ebooks/form/others', locals: { f: f } %>
+      <%= render partial: 'ebooks/form/isbn', locals: { f: f } %>
+    </div>
+    <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 mb-6">
+      <%= render partial: 'ebooks/form/prices', locals: { f: f } %>
+      <%= render partial: 'ebooks/form/files', locals: { f: f } %>
+    </div>
+    <%= render partial: 'ebooks/form/submits', locals: { f: f } %>
+  <% end %>
+</section>

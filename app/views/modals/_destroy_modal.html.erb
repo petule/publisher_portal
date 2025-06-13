@@ -9,12 +9,12 @@
     </section>
     <footer class="modal-card-foot">
       <button class="button" data-action="click->modal#close">
-        <%= t('modal.destroy.cancel') %>
+        <%= t('modals.destroy.cancel') %>
       </button>
       <button class="button red" data-action="click->modal#confirm">
         <%= t('modals.destroy.confirm') %>
       </button>
-      <%= link_to t('modals.destroy.confirm'), '#', method: :delete, class: 'button red',
+      <%= link_to t('modals.destroy.confirm'), '#', method: :delete, class: 'hidden',
                   data: { turbo_method: :delete, modal_target: 'confirmButton' } %>
     </footer>
   </div>

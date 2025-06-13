@@ -1,4 +1,5 @@
 class Series < ApplicationRecord
+  include Active
   has_many :ebooks, dependent: :nullify
   validates :isbn, uniqueness: true, presence: true
   scope :ordered_by, ->(column, direction = 'asc') {
